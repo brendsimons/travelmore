@@ -1,3 +1,5 @@
+SET GLOBAL time_zone = '+01:00';
+
 DROP TABLE location;
 
 CREATE TABLE location (
@@ -69,7 +71,7 @@ CREATE TABLE booking (
   trip              INT NOT NULL,
   user              INT NOT NULL,
   amountOfPeople    INT NOT NULL,
-  payed             TINYINT(1) DEFAULT 0
+  paid              TINYINT(1) DEFAULT 0
 );
 
 INSERT INTO `booking` (`id`, `trip`, `user`, `amountOfPeople`) VALUES

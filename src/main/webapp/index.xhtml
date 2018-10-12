@@ -18,7 +18,7 @@
          </p:column>
 
          <p:column headerText="Code">
-            <h:outputText value="#{location.code}" />
+            <h:outputText value="Removed from SQL" />
          </p:column>
       </p:dataTable>
       <h:form id="addLocationForm">
@@ -26,9 +26,6 @@
             <h:panelGrid columns="4" cellpadding="5">
                <h:outputLabel for="locationName" value="Name:" />
                <p:inputText id="locationName" value="#{locationController.newLocation.name}"></p:inputText>
-               <h:outputLabel for="locationCode" value="Code:" />
-               <p:inputText id="locationCode" value="#{locationController.newLocation.code}">
-               </p:inputText>
                <h:commandButton value="Toevoegen" action="#{locationController.submit}" update=":locationDataTable" />
             </h:panelGrid>
          </p:panel>
