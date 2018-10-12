@@ -1,3 +1,5 @@
+SET GLOBAL time_zone = '+01:00';
+
 DROP TABLE location;
 
 CREATE TABLE location (
