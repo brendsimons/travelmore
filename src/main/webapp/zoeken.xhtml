@@ -9,12 +9,52 @@
         <!-- Custom styles for this template -->
     </ui:define>
     <ui:define name="body">
-
-        <div class="starter-template">
-            <h1>Reis zoeken</h1>
-
-        </div>
-
+        <h1>Reis zoeken</h1>
+        <h:form>
+            <div class="form-group">
+                <h:outputLabel for="departureLocation">Waar wil je vertrekken?</h:outputLabel>
+                <h:inputText id = "departureLocation" value = "" class = "form-control">
+                </h:inputText>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="arrivalLocation">Waar wil je heen?</h:outputLabel>
+                <h:inputText id = "arrivalLocation" value = "" label = "name" class="form-control">
+                </h:inputText>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="goDate">Van?</h:outputLabel>
+                <h:inputText id = "goDate" value = "" label = "name" class="form-control datepicker">
+                </h:inputText>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="backDate">Tot?</h:outputLabel>
+                <h:inputText id = "backDate" value = "" label = "name" class="form-control">
+                </h:inputText>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="places">Hoeveel reizigers?</h:outputLabel>
+                <h:inputText id = "places" value = "" label = "name" class="form-control">
+                </h:inputText>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="transportType">Voorkeur transport?</h:outputLabel>
+                <h:inputText id = "transportType" value = "" label = "name" class="form-control">
+                </h:inputText>
+            </div>
+            <h:commandButton value="Zoeken" action="#{registrationBean.createRegistrationForm}" styleClass="btn btn-outline-secondary" />
+        </h:form>
+    </ui:define>
+    <ui:define name="scripts">
+        <h:outputScript>
+            $(document).ready(function() {
+                $(".datepicker").datepicker({
+                    dateFormat: 'dd MM, yy',
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "1960:2017"}
+                );
+            });
+        </h:outputScript>
     </ui:define>
 </ui:composition>
 </html>
