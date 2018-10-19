@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/WEB-INF/include/template.xhtml">
+    <ui:define name="head">
+        <title>Bedankt! | Travelmore</title>
+    </ui:define>
+    <ui:define name="body">
+        <div class="starter-template">
+            <h1>Bedankt!</h1>
+            <p class="lead">
+                Bedankt dat u voor ons gekozen hebt!
+            </p>
+            <p>
+                Zie hieronder voor een overzicht van uw booking:
+            </p>
+            <p:dataTable var="booking" value="#{bookingController.bookings}" id="bookingDataTable" styleClass="table-responsive-lg">
+                <p:column headerText="Vertrek-locatie">
+                    <h:outputText value="#{booking.trip.departureLocation.name}" />
+                </p:column>
+                <p:column headerText="Bestemming">
+                    <h:outputText value="#{booking.trip.arrivalLocation.name}" />
+                </p:column>
+                <p:column headerText="Vertrek-datum">
+                    <h:outputText value="#{booking.trip.goDate.time}" >
+                        <f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Terugkeer-datum">
+                    <h:outputText value="#{booking.trip.backDate.time}" >
+                        <f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Aantal personen">
+                    <h:outputText value="#{booking.amountOfPeople}" />
+                </p:column>
+                <p:column headerText="Prijs">
+                    <h:outputText value="€#{booking.trip.price}" />
+                </p:column>
+                <p:column headerText="Betaald?">
+                    <h:outputText value="Nee" rendered="#{booking.paid == false}" />
+                    <h:outputText value="Ja" rendered="#{booking.paid == true}" />
+                </p:column>
+                <p:column headerText="Vervoers-middel">
+                    <h:outputText value="#{booking.trip.transportType.name}" />
+                </p:column>
+                <p:column headerText="Aantal plaatsen">
+                    <h:outputText value="#{booking.trip.places}" />
+                </p:column>
+            </p:dataTable>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>
