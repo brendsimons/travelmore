@@ -29,8 +29,9 @@ public class UserController {
         return this.userService.findAllUsers();
     }
 
-    public void submit(){
+    public String submit(){
         this.userService.insert(newUser);
-    }
 
+        return "registerBedankt";
+    }
 }
