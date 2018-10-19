@@ -1,6 +1,5 @@
 package be.thomasmore.travelmore.domain;
 
-
 import javax.persistence.*;
 
 @Entity
