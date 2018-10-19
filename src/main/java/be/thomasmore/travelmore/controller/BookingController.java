@@ -20,12 +20,12 @@ public class BookingController {
 
     public Booking getNewBooking() { return newBooking; }
 
-    public String book(Trip trip, int people){
+    public String book(Trip trip, Trip searchTrip){
         newBooking = new Booking();
 
         newBooking.setUser(null);
         newBooking.setTrip(trip);
-        newBooking.setAmountOfPeople(people);
+        newBooking.setAmountOfPeople(searchTrip.getPlaces());
         newBooking.setPaid(false);
 
         return "book";

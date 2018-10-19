@@ -16,7 +16,7 @@ public class TripRepository {
     }
 
     public List<Trip> findAll() {
-        return entityManager.createNamedQuery(Location.FIND_ALL, Trip.class).getResultList();
+        return entityManager.createNamedQuery(Trip.FIND_ALL, Trip.class).getResultList();
     }
 
     public void insert(Trip trip) {

@@ -24,6 +24,7 @@ public class SearchController {
     public Trip getSearchTrip(){ return searchTrip; }
 
     public List<Trip> getSearchedTrips(){ return searchedTrips; }
+    public List<Trip> getAllTrips(){ return tripService.findAllTrips(); }
 
     public void submit(){
         searchTrip.setBackDate(addDays(searchTrip.getBackDate(), 1));
