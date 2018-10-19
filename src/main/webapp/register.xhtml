@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">>
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f = "http://java.sun.com/jsf/core">>
 
 <ui:composition template="/WEB-INF/include/template.xhtml">
     <ui:define name="head">
@@ -14,7 +15,7 @@
 
         <div class="starter-template">
             <h1>Register</h1>
-            <p class="lead">Use this document as a way to quickly start any new project.<br/> All you get is this text and a mostly barebones HTML document.</p>
+            <p class="lead">Registreer je account</p>
             <h:form id="addUserForm">
                 <p:panel id="panel">
                     <h:panelGrid columns="2" >
@@ -30,7 +31,13 @@
                         <h:outputLabel for="UserPasswordName">Wachtwoord: </h:outputLabel>
                         <p:inputText id="UserPasswordName" value="#{userController.newUser.password}"></p:inputText>
 
-                        <h:commandButton value="Registreren" action="#{userController.submit}" />
+                        <h:outputLabel for="UserVillageName">Stad: </h:outputLabel>
+                        <p:inputText id="UserVillageName" value="#{userController.newUser.village}"></p:inputText>
+
+                        <h:outputLabel for="UserStreetName">Straat: </h:outputLabel>
+                        <p:inputText id="UserStreetName" value="#{userController.newUser.street}"></p:inputText>
+
+                        <h:commandButton value="Registreren" action="#{userController.submit}" ></h:commandButton>
                     </h:panelGrid>
                 </p:panel>
             </h:form>
