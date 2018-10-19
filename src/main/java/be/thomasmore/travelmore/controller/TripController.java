@@ -32,5 +32,4 @@ public class TripController {
     public void submit(){
         this.tripService.insert(newTrip);
     }
-
 }

@@ -41,7 +41,7 @@ CREATE TABLE trip (
 
 INSERT INTO `trip` (`id`, `departureLocation`, `arrivalLocation`, `goDate`, `backDate`, `places`, `price`, `transportType`) VALUES
 (1, 1, 2, '2018-10-12 15:00:00', '2018-10-19 15:00:00', 10, 55.45, 1),
-(2, 5, 3, '2018-10-20 11:30:00', '2018-10-25 19:00:00', 20, 45.33, 2),
+(2, 5, 3, '2018-10-20 11:30:00', '2018-10-25 19:00:00', 20, 45, 2),
 (3, 4, 2, '2018-10-24 10:00:00', '2018-10-30 15:00:00', 15, 29.64, 3),
 (4, 1, 4, '2018-10-24 13:00:00', '2018-11-02 15:00:00', 20, 71.45, 1),
 (5, 3, 1, '2018-10-28 17:00:00', '2018-11-05 23:00:00', 10, 23.45, 2),
@@ -54,15 +54,17 @@ CREATE TABLE user (
   firstName         VARCHAR(255) NOT NULL,
   lastName          VARCHAR(255) NOT NULL,
   email             VARCHAR(255) NOT NULL,
-  password          VARCHAR(255) NOT NULL
+  password          VARCHAR(255) NOT NULL,
+  village           VARCHAR(255) NOT NULL,
+  street            VARCHAR(255) NOT NULL
 );
 
-INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `password`) VALUES
-(1, 'Firstname1', 'Lastname1', 'user2@test.com', 'test'),
-(2, 'Firstname2', 'Lastname2', 'user2@test.com', 'test'),
-(3, 'Firstname3', 'Lastname3', 'user2@test.com', 'test'),
-(4, 'Firstname4', 'Lastname4', 'user2@test.com', 'test'),
-(5, 'Firstname5', 'Lastname5', 'user2@test.com', 'test');
+INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `password`, `village`, `street`) VALUES
+(1, 'Firstname1', 'Lastname1', 'user2@test.com', 'test', 'GemeenteA', 'Straat 2'),
+(2, 'Firstname2', 'Lastname2', 'user2@test.com', 'test', 'GemeenteB', 'Straat 4'),
+(3, 'Firstname3', 'Lastname3', 'user2@test.com', 'test', 'GemeenteC', 'Straat 6'),
+(4, 'Firstname4', 'Lastname4', 'user2@test.com', 'test', 'GemeenteD', 'Straat 8'),
+(5, 'Firstname5', 'Lastname5', 'user2@test.com', 'test', 'GemeenteE', 'Straat 10');
 
 DROP TABLE booking;
 
