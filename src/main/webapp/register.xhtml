@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">>
+
+<ui:composition template="/WEB-INF/include/template.xhtml">
+    <ui:define name="head">
+        <title>Register</title>
+        <!-- Custom styles for this template -->
+    </ui:define>
+    <ui:define name="body">
+
+        <div class="starter-template">
+            <h1>Register</h1>
+            <p class="lead">Use this document as a way to quickly start any new project.<br/> All you get is this text and a mostly barebones HTML document.</p>
+            <h:form id="addUserForm">
+                <p:panel id="panel">
+                    <h:panelGrid columns="2" >
+                        <h:outputLabel for="UserFirstName">Voornaam: </h:outputLabel>
+                        <p:inputText id="UserFirstName" value="#{userController.newUser.firstName}"></p:inputText>
+
+                        <h:outputLabel for="UserLastName">Achternaam: </h:outputLabel>
+                        <p:inputText id="UserLastName" value="#{userController.newUser.lastName}"></p:inputText>
+
+                        <h:outputLabel for="UserEmailName">Email: </h:outputLabel>
+                        <p:inputText id="UserEmailName" value="#{userController.newUser.email}"></p:inputText>
+
+                        <h:outputLabel for="UserPasswordName">Wachtwoord: </h:outputLabel>
+                        <p:inputText id="UserPasswordName" value="#{userController.newUser.password}"></p:inputText>
+
+                        <h:commandButton value="Registreren" action="#{userController.submit}" />
+                    </h:panelGrid>
+                </p:panel>
+            </h:form>
+        </div>
+
+    </ui:define>
+</ui:composition>
+</html>

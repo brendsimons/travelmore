@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="/WEB-INF/include/template.xhtml">
     <ui:define name="head">
         <title>Zoekresultaten - TravelMore</title>
@@ -12,31 +13,39 @@
     </ui:define>
     <ui:define name="body">
         <div class="starter-template">
-            <p:dataTable var="trip" value="#{searchController.searchedTrips}" id="searchDataTable">
-                <p:column headerText="Startdatum">
-                    <h:outputText value="#{trip.goDate}" />
-                </p:column>
+            <h:form>
+                <p:dataTable var="trip" value="#{searchController.allTrips}" id="searchDataTable">
+                    <p:column headerText="Vertrek">
+                        <h:outputText value="#{trip.goDate.time}" >
+                            <f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+                        </h:outputText>
+                    </p:column>
 
-                <p:column headerText="Einddatum">
-                    <h:outputText value="#{trip.backDate}" />
-                </p:column>
+                    <p:column headerText="Terugkomst">
+                        <h:outputText value="#{trip.backDate.time}" >
+                            <f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+                        </h:outputText>
+                    </p:column>
 
-                <p:column headerText="Vrije plaatsen">
-                    <h:outputText value="#{trip.places}" />
-                </p:column>
+                    <p:column headerText="Vrije plaatsen">
+                        <h:outputText value="#{trip.places}" />
+                    </p:column>
 
-                <p:column headerText="Prijs per persoon">
-                    <h:outputText value="#{trip.price}" />
-                </p:column>
+                    <p:column headerText="Prijs per persoon">
+                        <h:outputText value="#{trip.price}">
+                            <f:convertNumber type="number" groupingUsed="true" minFractionDigits="2" pattern="#0.00"/>
+                        </h:outputText> &euro;
+                    </p:column>
 
-                <p:column headerText="Vervoer">
-                    <h:outputText value="#{trip.transportType}" />
-                </p:column>
+                    <p:column headerText="Vervoer">
+                        <h:outputText value="#{trip.transportType.name}" />
+                    </p:column>
 
-                <p:column headerText="Betalen">
-                    <h:commandLink action="#{bookingController.book(trip, searchController.searchTrip.places)}" value="Betalen"/>
-                </p:column>
-            </p:dataTable>
+                    <p:column headerText="Betalen">
+                        <h:commandLink action="#{bookingController.book(trip, searchController.searchTrip)}" value="Betalen"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
         </div>
     </ui:define>
 </ui:composition>
