@@ -17,7 +17,7 @@ public class BookingRepository {
     }
 
     public List<Booking> findAll() {
-        return entityManager.createNamedQuery(Location.FIND_ALL, Booking.class).getResultList();
+        return entityManager.createNamedQuery(Booking.FIND_ALL, Booking.class).getResultList();
     }
 
     public void insert(Booking booking) {

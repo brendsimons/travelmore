@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="/WEB-INF/include/template.xhtml">
     <ui:define name="head">
         <title>Bedankt! | Travelmore</title>
@@ -17,7 +18,7 @@
             <p>
                 Zie hieronder voor een overzicht van uw booking:
             </p>
-            <p:dataTable var="booking" value="#{bookingController.getBookingByUser(userController.users.contains('Firstname1 Lastname1'))}" id="bookingDataTable" styleClass="table-responsive-lg">
+            <p:dataTable var="booking" value="#{bookingController.bookings}" id="bookingDataTable" styleClass="table-responsive-lg">
                 <p:column headerText="Vertrek-locatie">
                     <h:outputText value="#{booking.trip.departureLocation.name}" />
                 </p:column>
@@ -25,10 +26,14 @@
                     <h:outputText value="#{booking.trip.arrivalLocation.name}" />
                 </p:column>
                 <p:column headerText="Vertrek-datum">
-                    <h:outputText value="#{booking.trip.goDate.toLocaleString()}" />
+                    <h:outputText value="#{booking.trip.goDate.time}" >
+                        <f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+                    </h:outputText>
                 </p:column>
                 <p:column headerText="Terugkeer-datum">
-                    <h:outputText value="#{booking.trip.backDate.toLocaleString()}" />
+                    <h:outputText value="#{booking.trip.backDate.time}" >
+                        <f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+                    </h:outputText>
                 </p:column>
                 <p:column headerText="Aantal personen">
                     <h:outputText value="#{booking.amountOfPeople}" />
