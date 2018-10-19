@@ -1,6 +1,7 @@
 package be.thomasmore.travelmore.service;
 
 import be.thomasmore.travelmore.domain.Booking;
+import be.thomasmore.travelmore.domain.User;
 import be.thomasmore.travelmore.repository.BookingRepository;
 
 import javax.ejb.Stateless;
@@ -24,4 +25,7 @@ public class BookingService {
         bookingRepository.insert(booking);
     }
 
+    public List<Booking> getBookingByUser(User user) {
+        return bookingRepository.getBookingByUser(user);
+    }
 }
