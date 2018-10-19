@@ -7,23 +7,37 @@
       xmlns:p="http://primefaces.org/ui">
 <ui:composition template="/WEB-INF/include/template.xhtml">
     <ui:define name="head">
-        <title>Hello JSF Bootstrap</title>
+        <title>Zoekresultaten - TravelMore</title>
         <!-- Custom styles for this template -->
     </ui:define>
     <ui:define name="body">
-        <p:dataTable var="location" value="#{locationController.locations}" id="locationDataTable">
-            <p:column headerText="Id">
-                <h:outputText value="#{location.id}" />
-            </p:column>
+        <div class="starter-template">
+            <p:dataTable var="trip" value="#{searchController.searchedTrips}" id="searchDataTable">
+                <p:column headerText="Startdatum">
+                    <h:outputText value="#{trip.goDate}" />
+                </p:column>
 
-            <p:column headerText="Name">
-                <h:outputText value="#{location.name}" />
-            </p:column>
+                <p:column headerText="Einddatum">
+                    <h:outputText value="#{trip.backDate}" />
+                </p:column>
 
-            <p:column headerText="Code">
-                <h:outputText value="Removed from SQL" />
-            </p:column>
-        </p:dataTable>
+                <p:column headerText="Vrije plaatsen">
+                    <h:outputText value="#{trip.places}" />
+                </p:column>
+
+                <p:column headerText="Prijs per persoon">
+                    <h:outputText value="#{trip.price}" />
+                </p:column>
+
+                <p:column headerText="Vervoer">
+                    <h:outputText value="#{trip.transportType}" />
+                </p:column>
+
+                <p:column headerText="Betalen">
+                    <h:commandLink action="#{bookingController.book(trip, searchController.searchTrip.places)}" value="Betalen"/>
+                </p:column>
+            </p:dataTable>
+        </div>
     </ui:define>
 </ui:composition>
 </html>

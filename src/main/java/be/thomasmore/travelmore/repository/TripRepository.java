@@ -23,4 +23,13 @@ public class TripRepository {
         entityManager.persist(trip);
     }
 
+    public List<Trip> search(Trip search) {
+        return entityManager.createNamedQuery(Location.FIND_ALL, Trip.class)
+                .setParameter("departureLocation", search.getDepartureLocation())
+                .setParameter("arrivalLocation", search.getArrivalLocation())
+                .setParameter("goDate", search.getGoDate())
+                .setParameter("backDate", search.getBackDate())
+                .setParameter("places", search.getPlaces())
+                .getResultList();
+    }
 }

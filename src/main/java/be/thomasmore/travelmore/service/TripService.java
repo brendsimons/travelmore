@@ -24,4 +24,6 @@ public class TripService {
         tripRepository.insert(trip);
     }
 
+    public List<Trip> search(Trip search){ return tripRepository.search(search); }
+
 }

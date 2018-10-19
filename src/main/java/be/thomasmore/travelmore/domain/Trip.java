@@ -11,11 +11,16 @@ import java.util.Date;
                 @NamedQuery(
                         name = Trip.FIND_ALL,
                         query = "SELECT t FROM Trip t"
+                ),
+                @NamedQuery(
+                        name = Trip.SEARCH,
+                        query = "SELECT t FROM Trip t WHERE t.departureLocation = :departureLocation AND t.arrivalLocation = :arrivalLocation AND t.goDate >= :goDate AND t.backDate <= :backDate AND t.places >= :places"
                 )
         }
 )
 public class Trip {
     public static final String FIND_ALL = "Trip.findAll";
+    public static final String SEARCH = "Trip.search";
 
     @Id
     private int id;

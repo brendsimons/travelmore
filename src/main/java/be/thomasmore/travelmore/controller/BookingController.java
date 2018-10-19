@@ -1,6 +1,7 @@
 package be.thomasmore.travelmore.controller;
 
 import be.thomasmore.travelmore.domain.Booking;
+import be.thomasmore.travelmore.domain.Trip;
 import be.thomasmore.travelmore.service.BookingService;
 
 import javax.faces.bean.ManagedBean;
@@ -12,25 +13,21 @@ import java.util.List;
 @ViewScoped
 public class BookingController {
 
-    private Booking newBooking = new Booking();
+    private Booking newBooking;
 
     @Inject
     private BookingService bookingService;
 
-    public Booking getNewBooking() {
-        return newBooking;
-    }
+    public Booking getNewBooking() { return newBooking; }
 
-    public void setNewBooking(Booking newLocation) {
-        this.newBooking = newLocation;
-    }
+    public String book(Trip trip, int people){
+        newBooking = new Booking();
 
-    public List<Booking> getBookings(){
-        return this.bookingService.findAllBookings();
-    }
+        newBooking.setUser(null);
+        newBooking.setTrip(trip);
+        newBooking.setAmountOfPeople(people);
+        newBooking.setPaid(false);
 
-    public void submit(){
-        this.bookingService.insert(newBooking);
+        return "book";
     }
-
 }
