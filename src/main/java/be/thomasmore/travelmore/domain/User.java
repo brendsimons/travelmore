@@ -10,11 +10,16 @@ import javax.persistence.*;
                 @NamedQuery(
                         name = User.FIND_ALL,
                         query = "SELECT u FROM User u"
+                ),
+                @NamedQuery(
+                        name = User.COMPARE_LOGIN,
+                        query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password"
                 )
         }
 )
 public class User {
     public static final String FIND_ALL = "User.findAll";
+    public static final String COMPARE_LOGIN = "User.compareLogin";
 
     @Id
     private int id;

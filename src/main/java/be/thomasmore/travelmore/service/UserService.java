@@ -24,4 +24,7 @@ public class UserService {
         userRepository.insert(user);
     }
 
+    public User compareLogin(User compareLogin){
+        return userRepository.compareLogin(compareLogin);
+    }
 }
