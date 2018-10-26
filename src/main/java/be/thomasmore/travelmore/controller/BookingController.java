@@ -32,7 +32,7 @@ public class BookingController {
         return this.bookingService.findAllBookings();
     }
 
-    public List<Booking> getBookingByUser(User user) {
+    public List<Booking> getBookingByUser(Integer user) {
         return this.bookingService.getBookingByUser(user);
     }
 }

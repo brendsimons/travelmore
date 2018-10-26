@@ -24,9 +24,9 @@ public class BookingRepository {
         entityManager.persist(booking);
     }
 
-    public List<Booking> getBookingByUser(User user) {
-        return entityManager.createNamedQuery(Location.FIND_ALL, Booking.class)
-                .setParameter("user", (user.getFirstName().toLowerCase() + user.getLastName().toLowerCase()).trim())
+    public List<Booking> getBookingByUser(Integer user) {
+        return entityManager.createNamedQuery(Booking.SEARCH, Booking.class)
+                .setParameter("user", (user))
                 .getResultList();
     }
 

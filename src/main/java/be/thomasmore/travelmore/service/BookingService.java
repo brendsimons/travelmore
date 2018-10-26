@@ -25,7 +25,7 @@ public class BookingService {
         bookingRepository.insert(booking);
     }
 
-    public List<Booking> getBookingByUser(User user) {
+    public List<Booking> getBookingByUser(Integer user) {
         return bookingRepository.getBookingByUser(user);
     }
 }

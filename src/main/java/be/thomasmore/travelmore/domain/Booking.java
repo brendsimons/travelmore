@@ -12,7 +12,7 @@ import javax.persistence.*;
                 ),
                 @NamedQuery(
                         name = Booking.SEARCH,
-                        query = "SELECT b from Booking b where b.user = :user"
+                        query = "SELECT b from Booking b where b.user.id = :user"
                 )
         }
 )
