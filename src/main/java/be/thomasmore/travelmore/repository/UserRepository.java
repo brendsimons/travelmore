@@ -16,7 +16,7 @@ public class UserRepository {
     }
 
     public List<User> findAll() {
-        return entityManager.createNamedQuery(Location.FIND_ALL, User.class).getResultList();
+        return entityManager.createNamedQuery(User.FIND_ALL, User.class).getResultList();
     }
 
     public void insert(User user) {
