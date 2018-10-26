@@ -4,12 +4,12 @@ import be.thomasmore.travelmore.domain.TransportType;
 import be.thomasmore.travelmore.service.TransportTypeService;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import java.util.List;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class TransportTypeController {
 
     private TransportType newTransportType = new TransportType();

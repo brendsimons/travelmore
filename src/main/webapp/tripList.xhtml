@@ -42,7 +42,7 @@
                     </p:column>
 
                     <p:column headerText="Betalen">
-                        <h:commandLink action="#{bookingController.book(trip, searchController.searchTrip)}" value="Betalen"/>
+                        <h:commandLink action="#{searchController.book(trip)}" value="Betalen"/>
                     </p:column>
                 </p:dataTable>
             </h:form>

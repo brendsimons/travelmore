@@ -4,12 +4,12 @@ import be.thomasmore.travelmore.domain.Trip;
 import be.thomasmore.travelmore.service.TripService;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import java.util.List;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class TripController {
 
     private Trip newTrip = new Trip();
