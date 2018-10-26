@@ -8,6 +8,7 @@ import be.thomasmore.travelmore.service.BookingService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import java.util.List;
 
 @ManagedBean
 @SessionScoped

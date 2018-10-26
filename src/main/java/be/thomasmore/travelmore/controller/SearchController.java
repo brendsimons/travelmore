@@ -2,6 +2,7 @@ package be.thomasmore.travelmore.controller;
 
 import be.thomasmore.travelmore.domain.Booking;
 import be.thomasmore.travelmore.domain.Trip;
+import be.thomasmore.travelmore.service.MailService;
 import be.thomasmore.travelmore.service.TripService;
 
 import javax.faces.bean.ManagedBean;
@@ -22,6 +23,8 @@ public class SearchController {
 
     @Inject
     private TripService tripService;
+    @Inject
+    private MailService emailService;
 
     public Trip getSearchTrip(){ return searchTrip; }
     public Booking getNewBooking() {
@@ -50,6 +53,17 @@ public class SearchController {
         newBooking.setTrip(trip);
         newBooking.setAmountOfPeople(searchTrip.getPlaces());
         newBooking.setPaid(false);
+
+        emailService.send("brendsimons@gmail.com", "Hier is uw booking", "" +
+                "Ziet er een leuke booking uit!\n" +
+                "\n" +
+                "Van: " + newBooking.getTrip().getDepartureLocation().getName() + "\n" +
+                "Naar: " + newBooking.getTrip().getArrivalLocation().getName() + "\n" +
+                "Aantal personen: " + newBooking.getAmountOfPeople() + "\n" +
+                "Vervoer: " + newBooking.getTrip().getTransportType().getName() + "\n" +
+                "\n" +
+                "Bye"
+        );
 
         return "book";
     }
