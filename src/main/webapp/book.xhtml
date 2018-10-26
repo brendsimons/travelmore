@@ -7,8 +7,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <h:outputLabel value="Betaal nu!"/><br />
-    Van: <h:outputText value="#{bookingController.newBooking.trip.departureLocation.name}" /><br />
-    Naar: <h:outputText value="#{bookingController.newBooking.trip.arrivalLocation.name}" /><br />
-    Aantal personen: <h:outputText value="#{bookingController.newBooking.amountOfPeople}" />
+    Van: <h:outputText value="#{searchController.newBooking.trip.departureLocation.name}" /><br />
+    Naar: <h:outputText value="#{searchController.newBooking.trip.arrivalLocation.name}" /><br />
+    Aantal personen: <h:outputText value="#{searchController.newBooking.amountOfPeople}" /><br />
+    Vervoer: <h:outputText value="#{searchController.newBooking.trip.transportType.name}" />
 </f:view>
 </html>

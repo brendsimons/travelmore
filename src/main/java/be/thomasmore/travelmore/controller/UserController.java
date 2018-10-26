@@ -4,12 +4,12 @@ import be.thomasmore.travelmore.domain.User;
 import be.thomasmore.travelmore.service.UserService;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import java.util.List;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class UserController {
 
     private User newUser = new User();

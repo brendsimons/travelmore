@@ -1,27 +1,32 @@
 package be.thomasmore.travelmore.controller;
 
-import be.thomasmore.travelmore.domain.Location;
+import be.thomasmore.travelmore.domain.Booking;
 import be.thomasmore.travelmore.domain.Trip;
 import be.thomasmore.travelmore.service.TripService;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class SearchController {
 
     private Trip searchTrip = new Trip();
     private List<Trip> searchedTrips;
 
+    private Booking newBooking;
+
     @Inject
     private TripService tripService;
 
     public Trip getSearchTrip(){ return searchTrip; }
+    public Booking getNewBooking() {
+        return newBooking;
+    }
 
     public List<Trip> getSearchedTrips(){ return searchedTrips; }
     public List<Trip> getAllTrips(){ return tripService.findAllTrips(); }
@@ -36,5 +41,16 @@ public class SearchController {
         cal.setTime(date);
         cal.add(Calendar.DATE, days);
         return cal.getTime();
+    }
+
+    public String book(Trip trip){
+        newBooking = new Booking();
+
+        newBooking.setUser(null);
+        newBooking.setTrip(trip);
+        newBooking.setAmountOfPeople(searchTrip.getPlaces());
+        newBooking.setPaid(false);
+
+        return "book";
     }
 }
