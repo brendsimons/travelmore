@@ -23,4 +23,11 @@ public class UserRepository {
         entityManager.persist(user);
     }
 
+    public User compareLogin(User compareLogin){
+        return entityManager.createNamedQuery(User.COMPARE_LOGIN, User.class)
+                .setParameter("email", compareLogin.getEmail())
+                .setParameter("password", compareLogin.getPassword())
+                .getSingleResult();
+    }
+
 }

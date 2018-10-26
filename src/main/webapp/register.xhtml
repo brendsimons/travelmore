@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f = "http://java.sun.com/jsf/core">>
+      xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/WEB-INF/include/template.xhtml">
     <ui:define name="head">
         <title>Register</title>
         <!-- Custom styles for this template -->
+
     </ui:define>
     <ui:define name="body">
 
@@ -37,10 +37,12 @@
                         <h:outputLabel for="UserStreetName">Straat: </h:outputLabel>
                         <p:inputText id="UserStreetName" value="#{userController.newUser.street}"></p:inputText>
 
-                        <h:commandButton value="Registreren" action="#{userController.submit}" ></h:commandButton>
+                        <h:commandButton value="Registreren" action="#{userController.submitRegister}" ></h:commandButton>
                     </h:panelGrid>
                 </p:panel>
             </h:form>
+
+
         </div>
 
     </ui:define>
