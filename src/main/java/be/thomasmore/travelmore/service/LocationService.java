@@ -33,4 +33,8 @@ public class LocationService {
         locationRepository.insert(location);
     }
 
+    public void remove(Location location) {
+        locationRepository.remove(location);
+    }
+
 }

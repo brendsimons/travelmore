@@ -26,4 +26,8 @@ public class LocationRepository {
         entityManager.persist(location);
     }
 
+    public void remove(Location location) {
+        entityManager.remove(entityManager.merge(location));
+    }
+
 }
