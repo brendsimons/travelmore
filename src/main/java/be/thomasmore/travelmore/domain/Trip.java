@@ -14,7 +14,7 @@ import java.util.Date;
                 ),
                 @NamedQuery(
                         name = Trip.SEARCH,
-                        query = "SELECT t FROM Trip t WHERE t.departureLocation = :departureLocation AND t.arrivalLocation = :arrivalLocation AND t.goDate >= :goDate AND t.backDate <= :backDate AND t.places >= :places"
+                        query = "SELECT t FROM Trip t WHERE t.departureLocation.id = :departureLocation AND t.arrivalLocation.id = :arrivalLocation AND t.goDate >= :goDate AND t.backDate <= :backDate AND t.places >= :places"
                 )
         }
 )

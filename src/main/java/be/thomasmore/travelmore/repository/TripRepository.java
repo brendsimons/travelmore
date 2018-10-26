@@ -24,9 +24,9 @@ public class TripRepository {
     }
 
     public List<Trip> search(Trip search) {
-        return entityManager.createNamedQuery(Trip.FIND_ALL, Trip.class)
-                .setParameter("departureLocation", search.getDepartureLocation())
-                .setParameter("arrivalLocation", search.getArrivalLocation())
+        return entityManager.createNamedQuery(Trip.SEARCH, Trip.class)
+                .setParameter("departureLocation", search.getDepartureLocation().getId())
+                .setParameter("arrivalLocation", search.getArrivalLocation().getId())
                 .setParameter("goDate", search.getGoDate())
                 .setParameter("backDate", search.getBackDate())
                 .setParameter("places", search.getPlaces())
