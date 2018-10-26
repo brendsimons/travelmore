@@ -16,7 +16,7 @@ public class TransportTypeRepository {
     }
 
     public List<TransportType> findAll() {
-        return entityManager.createNamedQuery(Location.FIND_ALL, TransportType.class).getResultList();
+        return entityManager.createNamedQuery(TransportType.FIND_ALL, TransportType.class).getResultList();
     }
 
     public void insert(TransportType transportType) {

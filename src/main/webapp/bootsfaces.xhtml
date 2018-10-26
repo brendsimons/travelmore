@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<h:head>
+    <title>Reis boeken</title>
+</h:head>
+<h:body>
+    <b:container>
+        <b:row>
+            <b:column>
+                <h1>Reis zoeken</h1>
+
+                <h:form id="searchForm" >
+                    <b:row>
+                        <b:column colMd="6">
+                            <b:selectOneMenu value="#{searchController.searchTrip.departureLocation}" label="Waar wil je vertrekken?">
+                                <f:selectItems value="#{locationController.locations}" var="l" itemValue="#{l}" itemLabel="#{l.name}"/>
+                            </b:selectOneMenu>
+                        </b:column>
+                        <b:column colMd="6">
+                            <b:selectOneMenu value="#{searchController.searchTrip.arrivalLocation}" label="Waar wil je heen?">
+                                <f:selectItems value="#{locationController.locations}" var="l" itemValue="#{l}" itemLabel="#{l.name}"/>
+                            </b:selectOneMenu>
+                        </b:column>
+                    </b:row>
+
+                    <b:row>
+                        <b:column colMd="6">
+                            <b:dateTimePicker value="#{searchController.searchTrip.goDate}" label="Van"/>
+                        </b:column>
+                        <b:column colMd="6">
+                            <b:dateTimePicker value="#{searchController.searchTrip.backDate}" label="Tot"/>
+                        </b:column>
+                    </b:row>
+
+                    <b:row>
+                        <b:column colMd="6">
+                            <b:inputText id="places" value="#{searchController.searchTrip.places}" label="Hoeveel reizigers?" />
+                        </b:column>
+                        <b:column colMd="6">
+                                <b:selectOneMenu value="#{searchController.searchTrip.transportType}" label="Voorkeur transport?">
+                                <f:selectItems value="#{transportTypeController.transportTypes}" var="t" itemValue="#{t}" itemLabel="#{t.name}"/>
+                            </b:selectOneMenu>
+                        </b:column>
+                    </b:row>
+
+                    <b:commandButton value="Zoeken" action="#{searchController.submit}" />
+
+                </h:form>
+            </b:column>
+        </b:row>
+    </b:container>
+</h:body>
+</html>
