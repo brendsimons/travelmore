@@ -10,6 +10,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +21,8 @@ import java.util.List;
 public class SearchController {
 
     private Trip searchTrip = new Trip();
+    private LocalDateTime minDate;
+
     private List<Trip> searchedTrips;
 
     private Booking newBooking;
@@ -29,6 +33,19 @@ public class SearchController {
     private MailService emailService;
 
     public Trip getSearchTrip(){ return searchTrip; }
+
+    public LocalDateTime getMinDate() {
+        return minDate;
+    }
+
+    public void setMinDate(LocalDateTime minDate) {
+        this.minDate = minDate;
+    }
+
+    public void updateMinDate() {
+        minDate = LocalDateTime.ofInstant(searchTrip.getGoDate().toInstant(), ZoneId.systemDefault());
+    }
+
     public Booking getNewBooking() {
         return newBooking;
     }
@@ -37,11 +54,6 @@ public class SearchController {
     public List<Trip> getAllTrips(){ return tripService.findAllTrips(); }
 
     public String submit(){
-        int dateComparison = searchTrip.getBackDate().compareTo(searchTrip.getGoDate());
-
-        if(dateComparison <= 0) {
-            return "zoeken";
-        }
 
         searchTrip.setBackDate(addDays(searchTrip.getBackDate(), 1));
         searchedTrips = tripService.search(searchTrip);
