@@ -53,30 +53,22 @@ public class UserController {
         User login = this.userService.compareLogin(gebruikteUser);
 
         if(login != null){
-            this.gebruikteUser = login;
-            return "registerBedankt";
+         //   this.gebruikteUser = login;
+
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.getExternalContext().getSessionMap().put("user", login);
+
+
+            return "loginBedankt";
         }else{
 
         }
         return "index";
     }
 
-//    public void login(){
-//        FacesContext context = FacesContext.getCurrentInstance();
-//
-//        if(gebruikteUser.getEmail().equals("email") && gebruikteUser.getPassword().equals("password")){
-//            context.getExternalContext().getSessionMap().put("email", gebruikteUser.getEmail());
-//            try {
-//                context.getExternalContext().redirect("registerBedankt.xhtml");
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        else  {
-//            //Send an error message on Login Failure
-//            context.addMessage(null, new FacesMessage("Authentication Failed. Check username or password."));
-//
-//        }
-//    }
+    public String logout(){
 
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "login";
+    }
 }
