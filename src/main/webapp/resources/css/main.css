@@ -1,3 +1,36 @@
-body {
-    padding-top: 90px;
+.navbar-brand{
+    margin: 0px;
+    padding: 2px 10px 0px 10px;
+}
+
+.footer{
+    background-color: #b2e5f3;
+}
+
+.footer .column{
+    position: relative;
+    height: 50px;
+}
+
+.footer .column p{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.footer .column p.center{
+    text-align: center;
+    width: 100%;
+}
+
+.footer .navbar-right{
+    margin-right: 0px;
+}
+
+.footer .navbar-right a{
+    color: #2b6597;
+}
+
+.footer .navbar-right a:hover{
+    background-color: #d3fbff;
 }

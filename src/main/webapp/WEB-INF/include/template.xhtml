@@ -11,6 +11,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content=""/>
     <meta name="author" content=""/>
+
+    <link rel="stylesheet" type="text/css" href="/travelmore/resources/css/main.css" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <f:verbatim>
@@ -27,8 +29,8 @@
             <b:navLink value="Zoeken" href="zoeken.xhtml"></b:navLink>
         </b:navbarLinks>
         <b:navbarLinks pull="right">
-            <b:navLink value="Aanmelden" href=""></b:navLink>
-            <b:navLink value="Registreren" href=""></b:navLink>
+            <b:navLink value="Aanmelden" href="login.xhtml"></b:navLink>
+            <b:navLink value="Registreren" href="register.xhtml"></b:navLink>
         </b:navbarLinks>
     </b:navBar>
 
@@ -37,19 +39,23 @@
         <hr/>
     </b:container>
 
-    <footer class="bg-info text-light py-5">
+    <footer class="bg-info text-light py-5 footer">
         <b:container fluid="true">
             <b:row>
-                <b:column colXs="12" colMd="6">
+                <b:column colXs="12" colMd="3" class="column">
                     <p>
-                        &copy; 2018-2019<br/>
-                        Made by ...
+                        &copy; 2018 - 2019 TravelMore
                     </p>
                 </b:column>
-                <b:column colXs="12" colMd="6">
+                <b:column colXs="12" colMd="6" class="column">
+                    <p class="center">
+                        Andreas Aerts, Antoon De Smedt, Brend Simons, Christophe Van Hoof, Jari Mathé
+                    </p>
+                </b:column>
+                <b:column colXs="12" colMd="3">
                     <b:navbarLinks pull="right">
-                        <b:navLink value="Aanmelden" href=""></b:navLink>
-                        <b:navLink value="Registreren" href=""></b:navLink>
+                        <b:navLink value="Aanmelden" href="login.xhtml"></b:navLink>
+                        <b:navLink value="Registreren" href="register.xhtml"></b:navLink>
                     </b:navbarLinks>
                 </b:column>
             </b:row>
