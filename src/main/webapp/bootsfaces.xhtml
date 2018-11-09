@@ -8,11 +8,11 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
 
-<h:head>
+<ui:composition template="/WEB-INF/include/template.xhtml">
+<ui:define name="head">
     <title>Reis boeken</title>
-</h:head>
-<h:body>
-    <b:container>
+</ui:define>
+    <ui:define name="body">
         <b:row>
             <b:column>
                 <h1>Reis zoeken</h1>
@@ -51,11 +51,12 @@
                         </b:column>
                     </b:row>
 
-                    <b:commandLink value="Zoeken" action="#{searchController.submit}" />
+                    <b:commandButton value="Zoeken" action="#{searchController.submit}" />
 
                 </h:form>
             </b:column>
         </b:row>
-    </b:container>
-</h:body>
+    </ui:define>
+</ui:composition>
+
 </html>

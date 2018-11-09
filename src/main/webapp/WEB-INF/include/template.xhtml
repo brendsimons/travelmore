@@ -11,10 +11,6 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-
-    <!-- Bootstrap core CSS -->
-    <h:outputStylesheet name="bootstrap/css/bootstrap.min.css"/>
-    <h:outputStylesheet name="css/main.css"/>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <f:verbatim>
@@ -26,63 +22,40 @@
     <ui:insert name="head"/>
 </h:head>
 <h:body>
-    <nav class="navbar navbar-expand-md navbar-light bg-info fixed-top">
-        <a class="navbar-brand" href="#"><h:graphicImage name="images/headerlogo.png" alt="headerlogo" width="120rem" height="auto"/></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <b:navBar brandHref="bootsfaces.xhtml" brandImg="/travelmore/resources/images/headerlogo.png" brandImgStyle="width:12rem; height:auto;" fluid="true">
+        <b:navbarLinks>
+            <b:navLink value="Zoeken" href="bootsfaces.xhtml"></b:navLink>
+        </b:navbarLinks>
+        <b:navbarLinks pull="right">
+            <b:navLink value="Aanmelden" href="#"></b:navLink>
+            <b:navLink value="Registreren" href="#"></b:navLink>
+        </b:navbarLinks>
+    </b:navBar>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Zoeken</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <li>
-                    <a class="nav-link" href="index.xhtml">Aanmelden</a>
-                </li>
-                <li>
-                    <a class="nav-link" href="#">|</a>
-                </li>
-                <li>
-                    <a class="nav-link" href="index.xhtml">Registreren</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container">
+    <b:container>
         <ui:insert name="body"/>
-    </div>
+        <hr/>
+    </b:container>
 
     <footer class="bg-info text-light py-5">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 col-md">
+        <b:container fluid="true">
+            <b:row>
+                <b:column colXs="12" colMd="6">
                     <p>
                         &copy; 2018-2019<br/>
                         Made by ...
                     </p>
-                </div>
-                <div class="col-12 col-md text-right">
-                    <ul class="nav justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="#">Aanmelden</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="#">Registreren</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+                </b:column>
+                <b:column colXs="12" colMd="6">
+                    <b:navbarLinks pull="right">
+                        <b:navLink value="Aanmelden" href="#"></b:navLink>
+                        <b:navLink value="Registreren" href="#"></b:navLink>
+                    </b:navbarLinks>
+                </b:column>
+            </b:row>
+        </b:container>
     </footer>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <h:outputScript name="bootstrap/js/bootstrap.min.js"/>
+
     <ui:insert name="scripts"/>
 </h:body>
 </html>
