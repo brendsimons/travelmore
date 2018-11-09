@@ -18,11 +18,10 @@
             </h:outputLabel>
             <b:row>
                 <h:outputLabel value="Zie hieronder voor een overzicht van uw booking:"
-                               rendered="#{bookingController.getBookingByUser(userController.gebruikteUser.id) > Long.parseLong(0)}"/>
+                               />
                 <p:dataTable var="booking"
-                             value="#{bookingController.getBookingByUser(userController.gebruikteUser.id)}"
-                             id="bookingDataTable" styleClass="table-responsive-lg"
-                             rendered="#{bookingController.getBookingByUser(userController.gebruikteUser.id) > Long.parseLong(0)}">
+                             value="#{bookingController.getBookingByUser(user.id)}"
+                             id="bookingDataTable" styleClass="table-responsive-lg">
                     <p:column headerText="Vertrek-locatie">
                         <h:outputText value="#{booking.trip.departureLocation.name}" />
                     </p:column>
@@ -51,15 +50,16 @@
                     <p:column headerText="Aantal plaatsen">
                         <h:outputText value="#{booking.trip.places}" />
                     </p:column>
+                    <p:column headerText="Betaalmethode">
+                        <h:outputText value="#{booking.paymentMethod}" />
+                    </p:column>
                 </p:dataTable>
             </b:row>
             <b:row>
-                <h:outputLabel value="Hier vindt je een overzicht van al je gegevens:"
-                               rendered="#{bookingController.getBookingByUser(userController.gebruikteUser.id) > Long.parseLong(0)}"/>
+                <h:outputLabel value="Hier vindt je een overzicht van al je gegevens:" />
 
-                <p:dataTable var="user" value="#{userController.gebruikteUser}" id="gegevensDataTable"
-                             styleClass="table-responsive-lg"
-                             rendered="#{bookingController.getBookingByUser(userController.gebruikteUser.id) > Long.parseLong(0)}">
+                <p:dataTable var="user" value="#{user}" id="gegevensDataTable"
+                             styleClass="table-responsive-lg">
                     <p:column headerText="Voornaam">
                         <h:outputText value="#{user.firstName}" />
                     </p:column>
