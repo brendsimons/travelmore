@@ -28,11 +28,6 @@ public class BookingController {
         return "book";
     }
 
-    public String submitBooking() {
-        this.bookingService.insert(newBooking);
-        return "bedankt";
-    }
-
     public List<Booking> getBookings(){
         return this.bookingService.findAllBookings();
     }
@@ -46,6 +41,7 @@ public class BookingController {
     }
 
     public String paySuccess(){
-        return "";
+        this.bookingService.insert(newBooking);
+        return "bedankt";
     }
 }
