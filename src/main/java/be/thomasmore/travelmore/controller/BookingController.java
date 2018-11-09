@@ -25,14 +25,19 @@ public class BookingController {
     public void setNewBooking(Booking newBooking){ this.newBooking = newBooking; }
 
     public String book(Trip trip, Trip searchTrip){
-        return "";
+        return "book";
+    }
+
+    public String submitBooking() {
+        this.bookingService.insert(newBooking);
+        return "bedankt";
     }
 
     public List<Booking> getBookings(){
         return this.bookingService.findAllBookings();
     }
 
-    public List<Booking> getBookingByUser(Integer user) {
-        return this.bookingService.getBookingByUser(user);
+    public List<Booking> getBookingByUser(Integer userId) {
+        return this.bookingService.getBookingByUser(userId);
     }
 }

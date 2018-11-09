@@ -12,13 +12,11 @@
     <ui:define name="body">
         <div class="starter-template">
             <h1>Bedankt!</h1>
-            <p class="lead">
+            <h:outputLabel class="lead">
                 Bedankt dat u voor ons gekozen hebt!
-            </p>
-            <p>
-                Zie hieronder voor een overzicht van uw booking:
-            </p>
-            <p:dataTable var="booking" value="#{bookingController.getBookingByUser(userController.users.get(1).id)}" id="bookingDataTable" styleClass="table-responsive-lg">
+            </h:outputLabel>
+            <h:outputLabel value="Zie hieronder voor een overzicht van uw booking:" rendered="#{bookingController.getBookingByUser(userController.gebruikteUser.id) > Long.parseLong(0)}"/>
+            <p:dataTable var="booking" value="#{bookingController.getBookingByUser(userController.gebruikteUser.id)}" id="bookingDataTable" styleClass="table-responsive-lg" rendered="#{bookingController.getBookingByUser(userController.gebruikteUser.id) > Long.parseLong(0)}">
                 <p:column headerText="Vertrek-locatie">
                     <h:outputText value="#{booking.trip.departureLocation.name}" />
                 </p:column>
@@ -41,10 +39,6 @@
                 <p:column headerText="Prijs">
                     <h:outputText value="€#{booking.trip.price}" />
                 </p:column>
-                <p:column headerText="Betaald?">
-                    <h:outputText value="Nee" rendered="#{booking.paid == false}" />
-                    <h:outputText value="Ja" rendered="#{booking.paid == true}" />
-                </p:column>
                 <p:column headerText="Vervoers-middel">
                     <h:outputText value="#{booking.trip.transportType.name}" />
                 </p:column>
@@ -52,9 +46,10 @@
                     <h:outputText value="#{booking.trip.places}" />
                 </p:column>
             </p:dataTable>
-            <p></p>
-            <p>Hier vindt je een overzicht van al je gegevens:</p>
-            <p:dataTable var="user" value="#{userController.users.get(1)}" id="gegevensDataTable" styleClass="table-responsive-lg">
+
+            <h:outputLabel value="Hier vindt je een overzicht van al je gegevens:" rendered="#{bookingController.getBookingByUser(userController.gebruikteUser.id) > Long.parseLong(0)}"/>
+
+            <p:dataTable var="user" value="#{userController.gebruikteUser}" id="gegevensDataTable" styleClass="table-responsive-lg" rendered="#{bookingController.getBookingByUser(userController.gebruikteUser.id) > Long.parseLong(0)}">
                 <p:column headerText="Voornaam">
                     <h:outputText value="#{user.firstName}" />
                 </p:column>
@@ -68,7 +63,6 @@
                     <h:outputText value="#{user.street} #{user.village}" />
                 </p:column>
             </p:dataTable>
-            <p></p>
         </div>
     </ui:define>
 </ui:composition>
