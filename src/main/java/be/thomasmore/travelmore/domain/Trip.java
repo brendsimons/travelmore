@@ -2,6 +2,7 @@ package be.thomasmore.travelmore.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 

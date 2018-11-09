@@ -34,12 +34,12 @@
                     <b:row>
                         <b:column colMd="6">
                             <b:formGroup>
-                                <b:dateTimePicker value="#{searchController.searchTrip.goDate}" ondtchange="ajax:searchController.searchTrip.setGoDate" format="DD/MM/YYYY" label="Van" required="true"/>
+                                <b:dateTimePicker value="#{searchController.searchTrip.goDate}" ondtchange="ajax:searchController.updateMinDate" process="@this" update="backDate" format="DD/MM/YYYY" label="Van" required="true"/>
                                 <b:message for="@previous" col-sm="9" />
                             </b:formGroup>
                         </b:column>
                         <b:column colMd="6">
-                            <b:dateTimePicker value="#{searchController.searchTrip.backDate}" format="DD/MM/YYYY" minDate="#{searchController.searchTrip.goDate}" label="Tot" required="true"/>
+                            <b:dateTimePicker id="backDate" value="#{searchController.searchTrip.backDate}" format="DD/MM/YYYY" min-date="#{searchController.minDate}" label="Tot" required="true"/>
                         </b:column>
                     </b:row>
 
