@@ -53,11 +53,9 @@ public class UserController {
         User login = this.userService.compareLogin(gebruikteUser);
 
         if(login != null){
-         //   this.gebruikteUser = login;
 
             FacesContext context = FacesContext.getCurrentInstance();
             context.getExternalContext().getSessionMap().put("user", login);
-
 
             return "loginBedankt";
         }else{
@@ -69,6 +67,10 @@ public class UserController {
     public String logout(){
 
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "login";
+    }
+
+    public String navigateToLogin(){
         return "login";
     }
 }
