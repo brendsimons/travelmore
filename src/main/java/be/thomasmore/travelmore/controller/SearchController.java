@@ -2,11 +2,13 @@ package be.thomasmore.travelmore.controller;
 
 import be.thomasmore.travelmore.domain.Booking;
 import be.thomasmore.travelmore.domain.Trip;
+import be.thomasmore.travelmore.domain.User;
 import be.thomasmore.travelmore.service.MailService;
 import be.thomasmore.travelmore.service.TripService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.util.Calendar;
 import java.util.Date;
@@ -49,9 +51,18 @@ public class SearchController {
     }
 
     public String book(Trip trip){
+        FacesContext context = FacesContext.getCurrentInstance();
+        boolean loggedIn = context.getExternalContext().getSessionMap().containsKey("user");
+
+        if(!loggedIn){
+            return "login";
+        }
+
+        User user = (User) context.getExternalContext().getSessionMap().get("user");
+
         newBooking = new Booking();
 
-        newBooking.setUser(null);
+        newBooking.setUser(user);
         newBooking.setTrip(trip);
         newBooking.setAmountOfPeople(searchTrip.getPlaces());
         newBooking.setPaid(false);

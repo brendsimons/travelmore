@@ -61,6 +61,11 @@ public class UserController {
         return "index";
     }
 
+    public boolean isLoggedIn(){
+        FacesContext context = FacesContext.getCurrentInstance();
+        return context.getExternalContext().getSessionMap().containsKey("user");
+    }
+
 //    public void login(){
 //        FacesContext context = FacesContext.getCurrentInstance();
 //
