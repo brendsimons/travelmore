@@ -35,4 +35,12 @@ public class BookingController {
     public List<Booking> getBookingByUser(Integer user) {
         return this.bookingService.getBookingByUser(user);
     }
+
+    public String pay(Booking booking, String paymentMethod){
+        return "";
+    }
+
+    public String paySuccess(){
+        return "";
+    }
 }

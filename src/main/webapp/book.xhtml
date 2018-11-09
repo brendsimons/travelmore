@@ -10,6 +10,10 @@
     Van: <h:outputText value="#{searchController.newBooking.trip.departureLocation.name}" /><br />
     Naar: <h:outputText value="#{searchController.newBooking.trip.arrivalLocation.name}" /><br />
     Aantal personen: <h:outputText value="#{searchController.newBooking.amountOfPeople}" /><br />
-    Vervoer: <h:outputText value="#{searchController.newBooking.trip.transportType.name}" />
+    Vervoer: <h:outputText value="#{searchController.newBooking.trip.transportType.name}" /><br /><br />
+
+    <h:commandLink action="#{bookingController.pay(searchController.newBooking, 'Bancontact')}" value="Betalen met Bancontact"/><br />
+    <h:commandLink action="#{bookingController.pay(searchController.newBooking, 'Creditcard')}" value="Betalen met Creditcard"/><br />
+    <h:commandLink action="#{bookingController.pay(searchController.newBooking, 'PayPal')}" value="Betalen met PayPal"/>
 </f:view>
 </html>
