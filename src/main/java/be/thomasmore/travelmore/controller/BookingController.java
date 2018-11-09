@@ -37,10 +37,13 @@ public class BookingController {
     }
 
     public String pay(Booking booking, String paymentMethod){
-        return "";
+        this.newBooking = booking;
+        this.newBooking.setPaymentMethod(paymentMethod);
+        return paySuccess();
     }
 
     public String paySuccess(){
+        this.newBooking.setPaid(true);
         this.bookingService.insert(newBooking);
         return "bedankt";
     }
