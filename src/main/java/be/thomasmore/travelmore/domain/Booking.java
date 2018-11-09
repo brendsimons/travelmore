@@ -32,6 +32,8 @@ public class Booking {
     private int amountOfPeople;
     @Column(name = "paid")
     private boolean paid;
+    @Column(name = "paymentMethod")
+    private String paymentMethod;
 
     public int getId() {
         return id;
@@ -61,5 +63,13 @@ public class Booking {
 
     public void setPaid(boolean paid) {
         this.paid = paid;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 }

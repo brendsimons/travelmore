@@ -73,13 +73,14 @@ CREATE TABLE booking (
   trip              INT NOT NULL,
   user              INT NOT NULL,
   amountOfPeople    INT NOT NULL,
-  paid              TINYINT(1) DEFAULT 0
+  paid              TINYINT(1) DEFAULT 0,
+  paymentMethod     VARCHAR(255) NOT NULL
 );
 
-INSERT INTO `booking` (`id`, `trip`, `user`, `amountOfPeople`) VALUES
-(1, 1, 1, 1),
-(2, 3, 2, 5),
-(3, 5, 3, 4),
-(4, 4, 4, 3),
-(5, 2, 5, 2),
-(6, 3, 1, 3);
+INSERT INTO `booking` (`id`, `trip`, `user`, `amountOfPeople`, `paymentMethod`) VALUES
+(1, 1, 1, 1, 'Bancontact'),
+(2, 3, 2, 5, 'Creditcard'),
+(3, 5, 3, 4, 'Bancontact'),
+(4, 4, 4, 3, 'Creditcard'),
+(5, 2, 5, 2, 'PayPal'),
+(6, 3, 1, 3, 'PayPal');
