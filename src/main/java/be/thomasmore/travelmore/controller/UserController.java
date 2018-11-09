@@ -53,12 +53,22 @@ public class UserController {
         User login = this.userService.compareLogin(gebruikteUser);
 
         if(login != null){
-            this.gebruikteUser = login;
-            return "registerBedankt";
+         //   this.gebruikteUser = login;
+
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.getExternalContext().getSessionMap().put("user", login);
+
+
+            return "loginBedankt";
         }else{
 
         }
         return "index";
+    }
+
+    public String logout(){
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "login";
     }
 
     public boolean isLoggedIn(){
@@ -83,5 +93,4 @@ public class UserController {
 //
 //        }
 //    }
-
 }
