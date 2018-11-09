@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
@@ -8,53 +9,63 @@
 >
 
 <ui:composition template="/WEB-INF/include/template.xhtml">
-    <ui:define name="head">
-        <title>Reis boeken</title>
-    </ui:define>
+<ui:define name="head">
+    <title>Reis boeken</title>
+</ui:define>
     <ui:define name="body">
-        <h1>Reis zoeken</h1>
-        <h:form id="searchForm" >
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <h:outputLabel for="departureLocation">Waar wil je vertrekken?</h:outputLabel>
-                    <h:inputText id="departureLocation" value="#{searchController.searchTrip.departureLocation}" class = "form-control">
-                    </h:inputText>
-                </div>
-                <div class="form-group col-md-6">
-                    <h:outputLabel for="arrivalLocation">Waar wil je heen?</h:outputLabel>
-                    <h:inputText id="arrivalLocation" value="#{searchController.searchTrip.arrivalLocation}" class="form-control">
-                    </h:inputText>
-                </div>
-            </div>
+        <b:row>
+            <b:column>
+                <h1>Reis zoeken</h1>
 
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <h:outputLabel for="goDate">Van?</h:outputLabel>
-                    <p:calendar id="goDate" value="#{searchController.searchTrip.goDate}"  mode="inline"  />
-                </div>
-                <div class="form-group col-md-6">
-                    <h:outputLabel for="backDate">Tot?</h:outputLabel>
-                    <h:inputText id="backDate" value="#{searchController.searchTrip.backDate}" class="form-control">
-                    </h:inputText>
-                </div>
-            </div>
+                <h:form id="searchForm" >
+                    <b:row>
+                        <b:column colMd="6">
+                            <b:selectOneMenu value="#{searchController.searchTrip.departureLocation}" label="Waar wil je vertrekken?" required="true">
+                                <f:selectItems value="#{locationController.locations}" var="l" itemValue="#{l}" itemLabel="#{l.name}"/>
+                            </b:selectOneMenu>
+                        </b:column>
+                        <b:column colMd="6">
+                            <b:selectOneMenu value="#{searchController.searchTrip.arrivalLocation}" label="Waar wil je heen?" required="true">
+                                <f:selectItems value="#{locationController.locations}" var="l" itemValue="#{l}" itemLabel="#{l.name}"/>
+                            </b:selectOneMenu>
+                        </b:column>
+                    </b:row>
 
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <h:outputLabel for="places">Hoeveel reizigers?</h:outputLabel>
-                    <h:inputText id="places" value="#{searchController.searchTrip.places}" class="form-control">
-                    </h:inputText>
-                </div>
-                <div class="form-group col-md-6">
-                    <h:outputLabel for="transportType">Voorkeur transport?</h:outputLabel>
-                    <h:inputText id="transportType" value="#{searchController.searchTrip.transportType}" class="form-control">
-                    </h:inputText>
-                </div>
-            </div>
+                    <b:row>
+                        <b:column colMd="6">
+                            <b:formGroup>
+                                <b:dateTimePicker value="#{searchController.searchTrip.goDate}" ondtchange="ajax:searchController.searchTrip.setGoDate" format="DD/MM/YYYY" label="Van" required="true"/>
+                                <b:message for="@previous" col-sm="9" />
+                            </b:formGroup>
+                        </b:column>
+                        <b:column colMd="6">
+                            <b:dateTimePicker value="#{searchController.searchTrip.backDate}" format="DD/MM/YYYY" minDate="#{searchController.searchTrip.goDate}" label="Tot" required="true"/>
+                        </b:column>
+                    </b:row>
 
-            <h:commandButton value="Zoeken" action="#{searchController.submit}" styleClass="btn btn-outline-secondary" />
+                    <b:row>
+                        <b:column colMd="6">
+                            <b:inputText id="places" value="#{searchController.searchTrip.places}" label="Hoeveel reizigers?" />
+                        </b:column>
+                        <b:column colMd="6">
+                                <b:selectOneMenu value="#{searchController.searchTrip.transportType}" label="Voorkeur transport?">
+                                <f:selectItems value="#{transportTypeController.transportTypes}" var="t" itemValue="#{t}" itemLabel="#{t.name}"/>
+                            </b:selectOneMenu>
+                        </b:column>
+                    </b:row>
 
-        </h:form>
+                    <b:row>
+                        <b:column colMd="6">
+                            <b:inputText id="price" value="#{searchController.searchTrip.price}" label="Maximum kostprijs?" />
+                        </b:column>
+                    </b:row>
+
+                    <b:commandButton value="Zoeken" action="#{searchController.submit}" />
+
+                </h:form>
+            </b:column>
+        </b:row>
     </ui:define>
 </ui:composition>
+
 </html>

@@ -37,6 +37,12 @@ public class SearchController {
     public List<Trip> getAllTrips(){ return tripService.findAllTrips(); }
 
     public String submit(){
+        int dateComparison = searchTrip.getBackDate().compareTo(searchTrip.getGoDate());
+
+        if(dateComparison <= 0) {
+            return "zoeken";
+        }
+
         searchTrip.setBackDate(addDays(searchTrip.getBackDate(), 1));
         searchedTrips = tripService.search(searchTrip);
 

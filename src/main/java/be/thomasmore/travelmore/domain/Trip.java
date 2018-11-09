@@ -2,6 +2,7 @@ package be.thomasmore.travelmore.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -31,6 +32,7 @@ public class Trip {
     @JoinColumn(name="arrivalLocation")
     private Location arrivalLocation;
     @Column(name = "goDate")
+    @NotNull(message = "Kies een datum.")
     private Date goDate;
     @Column(name = "backDate")
     private Date backDate;
