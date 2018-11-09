@@ -1,19 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Betaal nu!"/><br />
-    Van: <h:outputText value="#{searchController.newBooking.trip.departureLocation.name}" /><br />
-    Naar: <h:outputText value="#{searchController.newBooking.trip.arrivalLocation.name}" /><br />
-    Aantal personen: <h:outputText value="#{searchController.newBooking.amountOfPeople}" /><br />
-    Vervoer: <h:outputText value="#{searchController.newBooking.trip.transportType.name}" /><br /><br />
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<ui:composition template="/WEB-INF/include/template.xhtml">
+    <ui:define name="head">
+        <title>Login</title>
+        <!-- Custom styles for this template -->
+    </ui:define>
+    <ui:define name="body">
 
-    <h:commandLink action="#{bookingController.pay(searchController.newBooking, 'Bancontact')}" value="Betalen met Bancontact"/><br />
-    <h:commandLink action="#{bookingController.pay(searchController.newBooking, 'Creditcard')}" value="Betalen met Creditcard"/><br />
-    <h:commandLink action="#{bookingController.pay(searchController.newBooking, 'PayPal')}" value="Betalen met PayPal"/>
-</f:view>
+        <div class="starter-template">
+            <h1>Boeken</h1>
+            <p class="lead">U staat op het punt uw reis te boeken.</p>
+        </div>
+
+        <p>
+            Van: <h:outputText value="#{searchController.newBooking.trip.departureLocation.name}" /><br />
+            Naar: <h:outputText value="#{searchController.newBooking.trip.arrivalLocation.name}" /><br />
+            Aantal personen: <h:outputText value="#{searchController.newBooking.amountOfPeople}" /><br />
+            Vervoer: <h:outputText value="#{searchController.newBooking.trip.transportType.name}" /><br /><br />
+        </p>
+
+        <h:form>
+            <h:commandLink action="#{bookingController.pay(searchController.newBooking, 'Bancontact')}" value="Betalen met Bancontact"/><br />
+            <h:commandLink action="#{bookingController.pay(searchController.newBooking, 'Creditcard')}" value="Betalen met Creditcard"/><br />
+            <h:commandLink action="#{bookingController.pay(searchController.newBooking, 'PayPal')}" value="Betalen met PayPal"/>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
 </html>
