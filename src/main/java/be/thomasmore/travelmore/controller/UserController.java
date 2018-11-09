@@ -11,6 +11,7 @@ import java.util.List;
 import java.io.IOException;
 import javax.faces.context.FacesContext;
 import javax.faces.application.FacesMessage;
+import javax.validation.constraints.Null;
 
 @ManagedBean
 @SessionScoped
@@ -49,9 +50,15 @@ public class UserController {
     }
 
     public String login(){
-        this.userService.compareLogin(gebruikteUser);
+        User login = this.userService.compareLogin(gebruikteUser);
 
-        return "registerBedankt";
+        if(login != null){
+            this.gebruikteUser = login;
+            return "registerBedankt";
+        }else{
+
+        }
+        return "index";
     }
 
 //    public void login(){
