@@ -2,6 +2,7 @@ package be.thomasmore.travelmore.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "user")
@@ -28,6 +29,7 @@ public class User {
     @Column(name = "lastName")
     private String lastName;
     @Column(name = "email")
+    @Pattern(regexp = "[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+", message = "Email format is invalid.")
     private String email;
     @Column(name = "password")
     private String password;

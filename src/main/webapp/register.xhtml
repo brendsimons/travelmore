@@ -18,24 +18,24 @@
                 <p:panel id="panel">
                     <h:panelGrid columns="2" >
                         <h:outputLabel for="UserFirstName">Voornaam: </h:outputLabel>
-                        <p:inputText id="UserFirstName" value="#{userController.newUser.firstName}"></p:inputText>
+                        <p:inputText id="UserFirstName" value="#{userController.newUser.firstName}" required="true"></p:inputText>
 
                         <h:outputLabel for="UserLastName">Achternaam: </h:outputLabel>
-                        <p:inputText id="UserLastName" value="#{userController.newUser.lastName}"></p:inputText>
+                        <p:inputText id="UserLastName" value="#{userController.newUser.lastName}" required="true"></p:inputText>
 
                         <h:outputLabel for="UserEmailName">Email: </h:outputLabel>
-                        <p:inputText id="UserEmailName" value="#{userController.newUser.email}"></p:inputText>
+                        <p:inputText id="UserEmailName" value="#{userController.newUser.email}" required="true"></p:inputText>
 
                         <h:outputLabel for="UserPasswordName">Wachtwoord: </h:outputLabel>
-                        <p:inputText id="UserPasswordName" value="#{userController.newUser.password}"></p:inputText>
+                        <p:inputText id="UserPasswordName" value="#{userController.newUser.password}" required="true"></p:inputText>
 
                         <h:outputLabel for="UserVillageName">Stad: </h:outputLabel>
-                        <p:inputText id="UserVillageName" value="#{userController.newUser.village}"></p:inputText>
+                        <p:inputText id="UserVillageName" value="#{userController.newUser.village}" required="true"></p:inputText>
 
                         <h:outputLabel for="UserStreetName">Straat: </h:outputLabel>
-                        <p:inputText id="UserStreetName" value="#{userController.newUser.street}"></p:inputText>
+                        <p:inputText id="UserStreetName" value="#{userController.newUser.street}" required="true" ></p:inputText>
 
-                        <h:commandButton value="Registreren" action="#{userController.submitRegister}" ></h:commandButton>
+                        <h:commandButton value="Registreren" action="#{userController.submitRegister}" required="true"></h:commandButton>
                     </h:panelGrid>
                 </p:panel>
             </h:form>
