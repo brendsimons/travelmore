@@ -14,7 +14,7 @@
     <ui:define name="body">
         <div class="starter-template">
             <h:form>
-                <p:dataTable var="trip" value="#{searchController.allTrips}" id="searchDataTable">
+                <p:dataTable var="trip" value="#{searchController.searchedTrips}" id="searchDataTable">
                     <p:column headerText="Vertrek">
                         <h:outputText value="#{trip.goDate.time}" >
                             <f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
