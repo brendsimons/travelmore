@@ -47,14 +47,23 @@
                         <b:column colMd="6">
                             <b:inputText id="places" value="#{searchController.searchTrip.places}" label="Hoeveel reizigers?" />
                         </b:column>
+                        <b:column colMd="6">
+                            <b:selectOneMenu value="#{searchController.searchTrip.transportType}" label="Voorkeur transport?">
+                                <f:selectItems value="#{transportTypeController.transportTypes}" var="t" itemValue="#{t}" itemLabel="#{t.name}"/>
+                            </b:selectOneMenu>
+                        </b:column>
                     </b:row>
 
                     <b:row>
+                        <b:column colMd="6">
+                            <b:inputText id="price" value="#{searchController.searchTrip.price}" label="Maximum kostprijs?" />
+                        </b:column>
                         <b:column colXs="12">
                             <b:commandButton value="Zoeken" action="#{searchController.submit}" />
-                            <b:navLink style="margin-left: 1rem;" href="uitgebreidZoeken.xhtml" value="Uitgebreid zoeken"/>
+                            <b:navLink style="margin-left: 1rem;" href="zoeken.xhtml" value="Snel zoeken"/>
                         </b:column>
                     </b:row>
+
                 </h:form>
             </b:column>
         </b:row>
