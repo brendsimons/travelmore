@@ -27,4 +27,8 @@ public class UserService {
     public User compareLogin(User compareLogin){
         return userRepository.compareLogin(compareLogin);
     }
+
+    public boolean compareRegister(User compareRegister){
+        return userRepository.compareRegister(compareRegister);
+    }
 }

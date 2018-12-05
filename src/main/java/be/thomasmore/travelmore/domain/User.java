@@ -15,12 +15,17 @@ import javax.validation.constraints.Pattern;
                 @NamedQuery(
                         name = User.COMPARE_LOGIN,
                         query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password"
+                ),
+                @NamedQuery(
+                        name = User.COMPARE_REGISTER,
+                        query = "SELECT count(u) FROM User u WHERE u.email = :email"
                 )
         }
 )
 public class User {
     public static final String FIND_ALL = "User.findAll";
     public static final String COMPARE_LOGIN = "User.compareLogin";
+    public static final String COMPARE_REGISTER = "User.compareRegister";
 
     @Id
     private int id;

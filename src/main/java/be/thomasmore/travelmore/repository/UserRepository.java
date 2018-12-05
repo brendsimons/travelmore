@@ -30,4 +30,10 @@ public class UserRepository {
                 .getResultList().stream().findFirst().orElse(null);
     }
 
+    public boolean compareRegister(User compareLogin){
+        return ((Long)entityManager.createNamedQuery(User.COMPARE_REGISTER)
+                .setParameter("email", compareLogin.getEmail())
+                .getSingleResult()) > 0;
+    }
+
 }

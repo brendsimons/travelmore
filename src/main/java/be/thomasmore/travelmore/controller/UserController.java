@@ -19,6 +19,7 @@ public class UserController {
 
     private User newUser = new User();
     private User gebruikteUser = new User();
+    private String errorMessage = null;
 
     @Inject
     private UserService userService;
@@ -31,6 +32,10 @@ public class UserController {
         this.newUser = newUser;
     }
 
+    public String getErrorMessage() {return errorMessage;}
+
+    public void setErrorMessage(String errorMessage) {this.errorMessage = errorMessage;}
+
     public List<User> getUsers(){
         return this.userService.findAllUsers();
     }
@@ -40,9 +45,13 @@ public class UserController {
     }
 
     public String submitRegister(){
-        this.userService.insert(newUser);
-
-        return "registerBedankt";
+        if(!this.userService.compareRegister(newUser)) {
+            this.userService.insert(newUser);
+            return "registerBedankt";
+        }else{
+            this.errorMessage = "Het email adres is al in gebruik.";
+            return "register";
+        }
     }
 
     public User getGebruikteUser(){
@@ -59,6 +68,7 @@ public class UserController {
 
             return "loginBedankt";
         }else{
+            this.errorMessage = "Foutief wachtwoord of email adres ingegeven.";
             return "login";
         }
 
