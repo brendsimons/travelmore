@@ -28,7 +28,7 @@
                     </p:column>
 
                     <p:column headerText="Vrije plaatsen">
-                        <h:outputText value="#{trip.places}" />
+                        <h:outputText value="#{searchController.getPlacesEmpty(trip)}" />
                     </p:column>
 
                     <p:column headerText="Prijs per persoon">

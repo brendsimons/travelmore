@@ -11,14 +11,19 @@ import javax.persistence.*;
                         query = "SELECT b FROM Booking b"
                 ),
                 @NamedQuery(
-                        name = Booking.SEARCH,
+                        name = Booking.SEARCH_USER,
                         query = "SELECT b from Booking b where b.user.id = :user"
+                ),
+                @NamedQuery(
+                        name = Booking.SEARCH_TRIP,
+                        query = "SELECT b from Booking b where b.trip.id = :trip"
                 )
         }
 )
 public class Booking {
     public static final String FIND_ALL = "Booking.findAll";
-    public static final String SEARCH = "Booking.search";
+    public static final String SEARCH_USER = "Booking.searchuser";
+    public static final String SEARCH_TRIP = "Booking.searchtrip";
 
     @Id
     private int id;

@@ -32,8 +32,12 @@ public class BookingController {
         return this.bookingService.findAllBookings();
     }
 
-    public List<Booking> getBookingByUser(Integer userId) {
+    public List<Booking> getBookingByUser(int userId) {
         return this.bookingService.getBookingByUser(userId);
+    }
+
+    public List<Booking> getBookingByTrip(int tripId) {
+        return this.bookingService.getBookingByTrip(tripId);
     }
 
     public String pay(Booking booking, String paymentMethod){

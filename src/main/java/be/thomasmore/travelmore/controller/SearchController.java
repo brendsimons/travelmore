@@ -60,6 +60,10 @@ public class SearchController {
         return "tripList";
     }
 
+    public int getPlacesEmpty(Trip trip){
+        return 0;
+    }
+
     public String searchMore() {
         return "uitgebreidZoeken";
     }
