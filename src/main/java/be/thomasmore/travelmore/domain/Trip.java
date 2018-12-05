@@ -15,14 +15,29 @@ import java.util.Date;
                         query = "SELECT t FROM Trip t"
                 ),
                 @NamedQuery(
-                        name = Trip.SEARCH,
+                        name = Trip.SEARCH_MIN,
                         query = "SELECT t FROM Trip t WHERE t.departureLocation.id = :departureLocation AND t.arrivalLocation.id = :arrivalLocation AND t.goDate >= :goDate AND t.backDate <= :backDate AND t.places >= :places"
+                ),
+                @NamedQuery(
+                        name = Trip.SEARCH_MIN_PRICE,
+                        query = "SELECT t FROM Trip t WHERE t.departureLocation.id = :departureLocation AND t.arrivalLocation.id = :arrivalLocation AND t.goDate >= :goDate AND t.backDate <= :backDate AND t.places >= :places AND t.price <= :price"
+                ),
+                @NamedQuery(
+                        name = Trip.SEARCH_MIN_TRANSPORT,
+                        query = "SELECT t FROM Trip t WHERE t.departureLocation.id = :departureLocation AND t.arrivalLocation.id = :arrivalLocation AND t.goDate >= :goDate AND t.backDate <= :backDate AND t.places >= :places AND t.transportType.id = :transportType"
+                ),
+                @NamedQuery(
+                        name = Trip.SEARCH_ALL,
+                        query = "SELECT t FROM Trip t WHERE t.departureLocation.id = :departureLocation AND t.arrivalLocation.id = :arrivalLocation AND t.goDate >= :goDate AND t.backDate <= :backDate AND t.places >= :places AND t.price <= :price AND t.transportType.id = :transportType"
                 )
         }
 )
 public class Trip {
     public static final String FIND_ALL = "Trip.findAll";
-    public static final String SEARCH = "Trip.search";
+    public static final String SEARCH_MIN = "Trip.search";
+    public static final String SEARCH_MIN_PRICE = "Trip.search";
+    public static final String SEARCH_MIN_TRANSPORT = "Trip.search";
+    public static final String SEARCH_ALL = "Trip.search";
 
     @Id
     private int id;
