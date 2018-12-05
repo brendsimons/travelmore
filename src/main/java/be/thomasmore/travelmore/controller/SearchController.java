@@ -51,7 +51,6 @@ public class SearchController {
     }
 
     public List<Trip> getSearchedTrips(){ return searchedTrips; }
-    public List<Trip> getAllTrips(){ return tripService.findAllTrips(); }
 
     public String submit(){
 
