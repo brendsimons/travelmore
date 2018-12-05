@@ -56,7 +56,7 @@ public class SearchController {
     public String submit(){
 
         searchTrip.setBackDate(addDays(searchTrip.getBackDate(), 1));
-        searchedTrips = tripService.search(searchTrip);
+        searchedTrips = tripService.searchMin(searchTrip);
 
         return "tripList";
     }
