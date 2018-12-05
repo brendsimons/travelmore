@@ -3,6 +3,7 @@ package be.thomasmore.travelmore.controller;
 import be.thomasmore.travelmore.domain.Booking;
 import be.thomasmore.travelmore.domain.Trip;
 import be.thomasmore.travelmore.domain.User;
+import be.thomasmore.travelmore.service.BookingService;
 import be.thomasmore.travelmore.service.MailService;
 import be.thomasmore.travelmore.service.TripService;
 
@@ -12,6 +13,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -29,6 +31,8 @@ public class SearchController {
 
     @Inject
     private TripService tripService;
+    @Inject
+    private BookingService bookingService;
     @Inject
     private MailService emailService;
 
@@ -57,11 +61,26 @@ public class SearchController {
         searchTrip.setBackDate(addDays(searchTrip.getBackDate(), 1));
         searchedTrips = tripService.searchMin(searchTrip);
 
+        List<Trip> loop = new ArrayList<>(searchedTrips);
+
+        for(Trip t : loop){
+            if(getPlacesEmpty(t) < searchTrip.getPlaces()){
+                searchedTrips.remove(t);
+            }
+        }
+
         return "tripList";
     }
 
     public int getPlacesEmpty(Trip trip){
-        return 0;
+        List<Booking> bookings = bookingService.getBookingByTrip(trip.getId());
+        int places = trip.getPlaces();
+
+        for(Booking b : bookings){
+            places -= b.getAmountOfPeople();
+        }
+
+        return places;
     }
 
     public String searchMore() {
