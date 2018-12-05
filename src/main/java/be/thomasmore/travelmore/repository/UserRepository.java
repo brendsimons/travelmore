@@ -27,7 +27,7 @@ public class UserRepository {
         return entityManager.createNamedQuery(User.COMPARE_LOGIN, User.class)
                 .setParameter("email", compareLogin.getEmail())
                 .setParameter("password", compareLogin.getPassword())
-                .getSingleResult();
+                .getResultList().stream().findFirst().orElse(null);
     }
 
 }
