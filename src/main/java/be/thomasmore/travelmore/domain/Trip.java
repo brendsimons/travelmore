@@ -12,23 +12,23 @@ import java.util.Date;
         {
                 @NamedQuery(
                         name = Trip.FIND_ALL,
-                        query = "SELECT t FROM Trip t"
+                        query = "SELECT t, (SELECT SUM(b.amountOfPeople) FROM Booking b WHERE b.trip = t.id) as placesSold FROM Trip t"
                 ),
                 @NamedQuery(
                         name = Trip.SEARCH_MIN,
-                        query = "SELECT t FROM Trip t WHERE t.departureLocation.id = :departureLocation AND t.arrivalLocation.id = :arrivalLocation AND t.goDate >= :goDate AND t.backDate <= :backDate AND t.places >= :places"
+                        query = "SELECT t, (SELECT SUM(b.amountOfPeople) FROM Booking b WHERE b.trip = t.id) as placesSold FROM Trip t WHERE t.departureLocation.id = :departureLocation AND t.arrivalLocation.id = :arrivalLocation AND t.goDate >= :goDate AND t.backDate <= :backDate AND t.places >= :places"
                 ),
                 @NamedQuery(
                         name = Trip.SEARCH_MIN_PRICE,
-                        query = "SELECT t FROM Trip t WHERE t.departureLocation.id = :departureLocation AND t.arrivalLocation.id = :arrivalLocation AND t.goDate >= :goDate AND t.backDate <= :backDate AND t.places >= :places AND t.price <= :price"
+                        query = "SELECT t, (SELECT SUM(b.amountOfPeople) FROM Booking b WHERE b.trip = t.id) as placesSold FROM Trip t WHERE t.departureLocation.id = :departureLocation AND t.arrivalLocation.id = :arrivalLocation AND t.goDate >= :goDate AND t.backDate <= :backDate AND t.places >= :places AND t.price <= :price"
                 ),
                 @NamedQuery(
                         name = Trip.SEARCH_MIN_TRANSPORT,
-                        query = "SELECT t FROM Trip t WHERE t.departureLocation.id = :departureLocation AND t.arrivalLocation.id = :arrivalLocation AND t.goDate >= :goDate AND t.backDate <= :backDate AND t.places >= :places AND t.transportType.id = :transportType"
+                        query = "SELECT t, (SELECT SUM(b.amountOfPeople) FROM Booking b WHERE b.trip = t.id) as placesSold FROM Trip t WHERE t.departureLocation.id = :departureLocation AND t.arrivalLocation.id = :arrivalLocation AND t.goDate >= :goDate AND t.backDate <= :backDate AND t.places >= :places AND t.transportType.id = :transportType"
                 ),
                 @NamedQuery(
                         name = Trip.SEARCH_ALL,
-                        query = "SELECT t FROM Trip t WHERE t.departureLocation.id = :departureLocation AND t.arrivalLocation.id = :arrivalLocation AND t.goDate >= :goDate AND t.backDate <= :backDate AND t.places >= :places AND t.price <= :price AND t.transportType.id = :transportType"
+                        query = "SELECT t, (SELECT SUM(b.amountOfPeople) FROM Booking b WHERE b.trip = t.id) as placesSold FROM Trip t WHERE t.departureLocation.id = :departureLocation AND t.arrivalLocation.id = :arrivalLocation AND t.goDate >= :goDate AND t.backDate <= :backDate AND t.places >= :places AND t.price <= :price AND t.transportType.id = :transportType"
                 )
         }
 )
@@ -54,6 +54,8 @@ public class Trip {
     private Date backDate;
     @Column(name = "places")
     private int places;
+    @Column(name = "placesSold")
+    private int placesSold;
     @Column(name = "price")
     private double price;
     @ManyToOne
@@ -101,6 +103,10 @@ public class Trip {
     public void setPlaces(int places) {
         this.places = places;
     }
+
+    public int getPlacesSold(){ return placesSold; }
+
+    public int getPlacesEmpty(){ return getPlaces() - getPlacesSold(); }
 
     public double getPrice() { return price; }
 
