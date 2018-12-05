@@ -32,7 +32,9 @@
         <b:navbarLinks pull="right">
             <c:choose>
                 <c:when test="#{userController.loggedIn}">
-                    <h:commandLink action="#{userController.logout}" value="Uitloggen"/>
+                    <b:form style="padding: 15px 5px;">
+                        <h:commandLink action="#{userController.logout}" value="Uitloggen"/>
+                    </b:form>
                 </c:when>
                 <c:otherwise>
                     <b:navLink value="Aanmelden" href="login.xhtml"></b:navLink>
@@ -64,7 +66,9 @@
                     <b:navbarLinks pull="right">
                         <c:choose>
                             <c:when test="#{userController.loggedIn}">
-                                <h:commandLink action="#{userController.logout}" value="Uitloggen"/>
+                                <b:form class="logout">
+                                    <h:commandLink action="#{userController.logout}" value="Uitloggen"/>
+                                </b:form>
                             </c:when>
                             <c:otherwise>
                                 <b:navLink value="Aanmelden" href="login.xhtml"></b:navLink>

@@ -31,6 +31,10 @@
     color: #2b6597;
 }
 
-.footer .navbar-right a:hover{
+.footer .navbar-right .logout{
+    padding: 15px 5px;
+}
+
+.footer .navbar-right a:hover, .footer .navbar-right .logout:hover{
     background-color: #d3fbff;
 }
