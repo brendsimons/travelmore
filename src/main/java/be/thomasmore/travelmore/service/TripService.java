@@ -24,7 +24,20 @@ public class TripService {
         tripRepository.insert(trip);
     }
 
-    public List<Trip> search(Trip search){
-        return tripRepository.search(search); }
+    public List<Trip> searchMin(Trip search){
+        return tripRepository.searchMin(search);
+    }
+
+    public List<Trip> searchMinPrice(Trip search){
+        return tripRepository.searchMinPrice(search);
+    }
+
+    public List<Trip> searchMinTransportType(Trip search){
+        return tripRepository.searchMinTransportType(search);
+    }
+
+    public List<Trip> searchAll(Trip search){
+        return tripRepository.searchAll(search);
+    }
 
 }

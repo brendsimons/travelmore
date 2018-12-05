@@ -59,9 +59,9 @@ public class UserController {
 
             return "loginBedankt";
         }else{
-
+            return "login";
         }
-        return "index";
+
     }
 
     public String logout(){

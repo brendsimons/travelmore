@@ -23,13 +23,47 @@ public class TripRepository {
         entityManager.persist(trip);
     }
 
-    public List<Trip> search(Trip search) {
-        return entityManager.createNamedQuery(Trip.SEARCH, Trip.class)
+    public List<Trip> searchMin(Trip search) {
+        return entityManager.createNamedQuery(Trip.SEARCH_MIN, Trip.class)
                 .setParameter("departureLocation", search.getDepartureLocation().getId())
                 .setParameter("arrivalLocation", search.getArrivalLocation().getId())
                 .setParameter("goDate", search.getGoDate())
                 .setParameter("backDate", search.getBackDate())
                 .setParameter("places", search.getPlaces())
+                .getResultList();
+    }
+
+    public List<Trip> searchMinPrice(Trip search) {
+        return entityManager.createNamedQuery(Trip.SEARCH_MIN, Trip.class)
+                .setParameter("departureLocation", search.getDepartureLocation().getId())
+                .setParameter("arrivalLocation", search.getArrivalLocation().getId())
+                .setParameter("goDate", search.getGoDate())
+                .setParameter("backDate", search.getBackDate())
+                .setParameter("places", search.getPlaces())
+                .setParameter("price", search.getPrice())
+                .getResultList();
+    }
+
+    public List<Trip> searchMinTransportType(Trip search) {
+        return entityManager.createNamedQuery(Trip.SEARCH_MIN, Trip.class)
+                .setParameter("departureLocation", search.getDepartureLocation().getId())
+                .setParameter("arrivalLocation", search.getArrivalLocation().getId())
+                .setParameter("goDate", search.getGoDate())
+                .setParameter("backDate", search.getBackDate())
+                .setParameter("places", search.getPlaces())
+                .setParameter("transportType", search.getTransportType().getId())
+                .getResultList();
+    }
+
+    public List<Trip> searchAll(Trip search) {
+        return entityManager.createNamedQuery(Trip.SEARCH_ALL, Trip.class)
+                .setParameter("departureLocation", search.getDepartureLocation().getId())
+                .setParameter("arrivalLocation", search.getArrivalLocation().getId())
+                .setParameter("goDate", search.getGoDate())
+                .setParameter("backDate", search.getBackDate())
+                .setParameter("places", search.getPlaces())
+                .setParameter("price", search.getPrice())
+                .setParameter("transportType", search.getTransportType().getId())
                 .getResultList();
     }
 }
