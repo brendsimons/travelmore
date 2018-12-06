@@ -40,7 +40,7 @@ public class BookingController {
         this.newBooking = booking;
         this.newBooking.setPaymentMethod(paymentMethod);
 
-        return "betalenBancontact";
+        return paySuccess();
     }
 
 
