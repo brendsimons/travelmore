@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+xmlns:f = "http://java.sun.com/jsf/core">>
+<ui:composition template="/WEB-INF/include/template.xhtml">
+    <ui:define name="head">
+        <title>Betalen</title>
+        <!-- Custom styles for this template -->
+    </ui:define>
+    <ui:define name="body">
+
+        <div class="starter-template">
+            <h1>Betalen</h1>
+            <p class="lead">Betaal je boeking</p>
+            <h:form id="addUserForm">
+                <p:panel id="panel">
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <p:outputLabel for="betalen" value="Betalen:" />
+                        <h:outputLabel for="BetalingKaartnummer">Kaartnummer: </h:outputLabel>
+                        <p:inputText id="BetalingKaartnummer" value=""></p:inputText>
+
+                        <h:outputLabel for="BetalingVervaldatumMaand">Vervaldatum: </h:outputLabel>
+                        <p:inputText id="BetalingVervaldatumMaand" ></p:inputText>
+                        <p>/</p>
+                        <p:inputText id="BetalingVervaldatumJaar" ></p:inputText>
+
+                        <h:commandButton value="Betalen" ></h:commandButton>
+                    </h:panelGrid>
+                </p:panel>
+            </h:form>
+        </div>
+
+    </ui:define>
+</ui:composition>
+</html>
+
