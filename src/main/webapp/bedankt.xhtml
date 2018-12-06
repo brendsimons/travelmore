@@ -49,6 +49,7 @@
                     </p:column>
                     <p:column headerText="Aantal plaatsen">
                         <h:outputText value="#{booking.trip.places}" />
+                        <h:outputText value=" (nog #{searchController.getPlacesEmpty(booking.trip)} plaatsen vrij)"/>
                     </p:column>
                     <p:column headerText="Betaalmethode">
                         <h:outputText value="#{booking.paymentMethod}" />
