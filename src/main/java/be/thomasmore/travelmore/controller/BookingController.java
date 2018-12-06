@@ -40,7 +40,14 @@ public class BookingController {
         this.newBooking = booking;
         this.newBooking.setPaymentMethod(paymentMethod);
 
-        return paySuccess();
+        if (this.newBooking.getPaymentMethod().equals("Bancontact")){
+            return "betalenBancontact";
+        }else if (this.newBooking.getPaymentMethod().equals("Creditcard")){
+            return "betalenCreditcard";
+        }else{
+            return "betalenPaypal";
+        }
+
     }
 
 
