@@ -39,8 +39,10 @@ public class BookingController {
     public String pay(Booking booking, String paymentMethod){
         this.newBooking = booking;
         this.newBooking.setPaymentMethod(paymentMethod);
-        return paySuccess();
+
+        return "betalenBancontact";
     }
+
 
     public String paySuccess(){
         this.newBooking.setPaid(true);
