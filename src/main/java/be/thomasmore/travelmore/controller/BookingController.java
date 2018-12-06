@@ -8,6 +8,7 @@ import be.thomasmore.travelmore.service.BookingService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import java.text.DecimalFormat;
 import java.util.List;
 
 @ManagedBean
@@ -40,9 +41,18 @@ public class BookingController {
         return this.bookingService.getBookingByTrip(tripId);
     }
 
+    private static DecimalFormat df2 = new DecimalFormat(".##");
+
+    public String totalPrice(){
+        double totalPric = this.newBooking.getTrip().getPrice()*this.newBooking.getAmountOfPeople();
+        String totalPrice = df2.format(totalPric);
+        return totalPrice;
+    }
+
     public String pay(Booking booking, String paymentMethod){
         this.newBooking = booking;
         this.newBooking.setPaymentMethod(paymentMethod);
+        this.totalPrice();
 
         if (this.newBooking.getPaymentMethod().equals("Bancontact")){
             return "betalenBancontact";
