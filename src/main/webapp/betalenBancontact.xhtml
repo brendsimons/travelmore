@@ -13,7 +13,9 @@
     <ui:define name="body">
         <div class="starter-template">
             <h1>Betalen</h1>
-            <p class="lead">Bedrag: #{booking.trip.price}</p>
+            <p class="lead">Bedrag:
+                <h:outputText value="#{bookingController.totalPrice()}"></h:outputText> euro
+            </p>
         </div>
 
         <h:form id="myform">
