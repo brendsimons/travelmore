@@ -8,7 +8,7 @@
       xmlns:b="http://bootsfaces.net/ui">
 <ui:composition template="/WEB-INF/include/template.xhtml">
     <ui:define name="head">
-        <title>Betalen met Paypal</title>
+        <title>Betalen met PayPal</title>
     </ui:define>
     <ui:define name="body">
         <div class="starter-template">
@@ -18,15 +18,16 @@
             </p>
         </div>
     <div class="ui-g-6">
-    <h:form id="myform">
-        <h:outputText value="Email: "/>
-        <h:inputText label="email" /><br/><br/>
-        <h:outputText value="Paswoord: "/>
-        <h:inputSecret label="password" /><br/><br/>
-        <h:commandButton value="betalen" action="#{bookingController.paySuccess}" />
-    </h:form>
+        <b:form id="myform" horizontal="true">
+            <b:inputText label-small-screen="2" small-screen="8" label="Email PayPal" required="true" />
+            <b:inputSecret label-small-screen="2" small-screen="8" label="Wachtwoord" required="true" />
+            <b:row>
+                <b:column colXs="12" offset="2">
+                    <b:commandButton value="betalen" action="#{bookingController.paySuccess}" />
+                </b:column>
+            </b:row>
+        </b:form>
     </div>
-
 
     </ui:define>
 </ui:composition>

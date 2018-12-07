@@ -18,13 +18,15 @@
             </p>
         </div>
 
-        <h:form id="myform">
-            <h:outputText value="Kaartnummer:  "/>
-            <h:inputText label="kaartnummer" /><br/><br/>
-            <h:outputText value="vervaldatum (MM/JJ) : "/>
-            <h:inputSecret label="vervaldatum" /><br/><br/>
-            <h:commandButton value="betalen" action="#{bookingController.paySuccess}" />
-        </h:form>
+        <b:form id="myform" horizontal="true">
+            <b:inputText label-small-screen="2" small-screen="8" label="Kaartnummer" required="true" />
+            <b:inputSecret label-small-screen="2" small-screen="8" label="Vervaldatum (MM/JJ)" required="true" />
+            <b:row>
+                <b:column colXs="12" offset="2">
+                    <b:commandButton value="betalen" action="#{bookingController.paySuccess}" />
+                </b:column>
+            </b:row>
+        </b:form>
     </ui:define>
 </ui:composition>
 </html>

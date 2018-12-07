@@ -28,6 +28,7 @@ public class SearchController {
     private List<Trip> searchedTrips;
 
     private Booking newBooking;
+    public String errorMessage = null;
 
     @Inject
     private TripService tripService;
@@ -37,6 +38,10 @@ public class SearchController {
     private MailService emailService;
 
     public Trip getSearchTrip(){ return searchTrip; }
+
+    public String getErrorMessage() {return errorMessage;}
+
+    public void setErrorMessage(String errorMessage) {this.errorMessage = errorMessage;}
 
     public LocalDateTime getMinDate() {
         return minDate;
@@ -58,34 +63,59 @@ public class SearchController {
 
     public String submit(){
 
-        searchTrip.setBackDate(addDays(searchTrip.getBackDate(), 1));
-        searchedTrips = tripService.searchMin(searchTrip);
+        if(searchTrip.getPlaces() < 0) {
+            this.errorMessage = "Vul bij vrije plaatsen een waarde in groter dan 0";
+            return "index";
+        } else {
+            searchTrip.setBackDate(addDays(searchTrip.getBackDate(), 1));
+            searchedTrips = tripService.searchMin(searchTrip);
 
-        List<Trip> loop = new ArrayList<>(searchedTrips);
+            List<Trip> loop = new ArrayList<>(searchedTrips);
 
-        for(Trip t : loop){
-            if(getPlacesEmpty(t) < searchTrip.getPlaces()){
-                searchedTrips.remove(t);
+            for(Trip t : loop){
+                if(getPlacesEmpty(t) < searchTrip.getPlaces()){
+                    searchedTrips.remove(t);
+                }
             }
-        }
 
-        return "tripList";
+            this.errorMessage = null;
+
+            return "tripList";
+        }
     }
 
     public String submitdetailed(){
 
-        searchTrip.setBackDate(addDays(searchTrip.getBackDate(), 1));
-        searchedTrips = tripService.searchAll(searchTrip);
-
-        List<Trip> loop = new ArrayList<>(searchedTrips);
-
-        for(Trip t : loop){
-            if(getPlacesEmpty(t) < searchTrip.getPlaces()){
-                searchedTrips.remove(t);
+        if(searchTrip.getPlaces() <= 0 || searchTrip.getPrice() <=0) {
+            this.errorMessage = "";
+            if(searchTrip.getPlaces() <= 0) {
+                this.errorMessage += "vul bij vrije plaatsen een waarde in groter dan 0";
             }
+            if(searchTrip.getPlaces() <= 0 && searchTrip.getPrice() <=0) {
+                this.errorMessage += " en ";
+            }
+            if(searchTrip.getPrice() <= 0) {
+                this.errorMessage += "vul bij maximum prijs een waarde in groter dan 0";
+            }
+            return "uitgebreidZoeken";
+        } else {
+            searchTrip.setBackDate(addDays(searchTrip.getBackDate(), 1));
+            searchedTrips = tripService.searchAll(searchTrip);
+
+            List<Trip> loop = new ArrayList<>(searchedTrips);
+
+            for(Trip t : loop){
+                if(getPlacesEmpty(t) < searchTrip.getPlaces()){
+                    searchedTrips.remove(t);
+                }
+            }
+
+            this.errorMessage = null;
+
+            return "tripList";
         }
 
-        return "tripList";
+
     }
 
     public int getPlacesEmpty(Trip trip){
@@ -100,6 +130,7 @@ public class SearchController {
     }
 
     public String searchMore() {
+        this.errorMessage = null;
         return "uitgebreidZoeken";
     }
 
