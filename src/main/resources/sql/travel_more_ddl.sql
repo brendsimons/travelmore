@@ -61,7 +61,7 @@ CREATE TABLE user (
 
 INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `password`, `village`, `street`) VALUES
 (1, 'Christophe', 'Van Hoof', 'christophe@thomasmore.be', 'test', 'Mol', 'Stationsstraat 2'),
-(2, 'Brend', 'Simons', 'brend@thomasmore.be', 'test', 'Mol', 'Kleinhoefstraat 4'),
+(2, 'Brend', 'Simons', 'brendsimons@gmail.com', 'test', 'Mol', 'Kleinhoefstraat 4'),
 (3, 'Antoon', 'De Smedt', 'antoon@thomasmore.be', 'test', 'Mol', 'Achterbeemden 6'),
 (4, 'Andreas', 'Aerts', 'andreas@thomasmore.be', 'test', 'Geel', 'Singellaan 8'),
 (5, 'Jari', 'Mathé', 'jari@thomasmore.be', 'test', 'Geel', 'Bronstraat 10');
