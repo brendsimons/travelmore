@@ -1,6 +1,8 @@
 package be.thomasmore.travelmore.domain;
 
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -32,6 +34,8 @@ import java.util.Date;
                 )
         }
 )
+@ManagedBean
+@RequestScoped
 public class Trip {
     public static final String FIND_ALL = "Trip.findAll";
     public static final String SEARCH_MIN = "Trip.searchmin";
@@ -43,14 +47,17 @@ public class Trip {
     private int id;
     @ManyToOne
     @JoinColumn(name="departureLocation")
+    @NotNull(message = "Kies een locatie.")
     private Location departureLocation;
     @ManyToOne
     @JoinColumn(name="arrivalLocation")
+    @NotNull(message = "Kies een locatie.")
     private Location arrivalLocation;
     @Column(name = "goDate")
     @NotNull(message = "Kies een datum.")
     private Date goDate;
     @Column(name = "backDate")
+    @NotNull(message = "Kies een datum.")
     private Date backDate;
     @Column(name = "places")
     private int places;

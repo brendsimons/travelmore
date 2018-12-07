@@ -4,45 +4,34 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <ui:composition template="/WEB-INF/include/template.xhtml">
     <ui:define name="head">
-        <title>Register</title>
+        <title>Registreren</title>
         <!-- Custom styles for this template -->
     </ui:define>
     <ui:define name="body">
         <div class="starter-template">
-            <h1>Register</h1>
+            <h1>Registreren</h1>
             <p class="lead">Registreer je account</p>
             <c:if test="#{userController.errorMessage != null}">
                 <p class="alert alert-danger">#{userController.errorMessage}</p>
             </c:if>
-            <h:form id="addUserForm">
-                <p:panel id="panel">
-                    <h:panelGrid columns="2" >
-                        <h:outputLabel for="UserFirstName">Voornaam: </h:outputLabel>
-                        <p:inputText id="UserFirstName" value="#{userController.newUser.firstName}" required="true"></p:inputText>
-
-                        <h:outputLabel for="UserLastName">Achternaam: </h:outputLabel>
-                        <p:inputText id="UserLastName" value="#{userController.newUser.lastName}" required="true"></p:inputText>
-
-                        <h:outputLabel for="UserEmailName">Email: </h:outputLabel>
-                        <p:inputText id="UserEmailName" value="#{userController.newUser.email}" required="true"></p:inputText>
-
-                        <h:outputLabel for="UserPasswordName">Wachtwoord: </h:outputLabel>
-                        <p:inputText id="UserPasswordName" value="#{userController.newUser.password}" required="true"></p:inputText>
-
-                        <h:outputLabel for="UserVillageName">Stad: </h:outputLabel>
-                        <p:inputText id="UserVillageName" value="#{userController.newUser.village}" required="true"></p:inputText>
-
-                        <h:outputLabel for="UserStreetName">Straat: </h:outputLabel>
-                        <p:inputText id="UserStreetName" value="#{userController.newUser.street}" required="true" ></p:inputText>
-
-                        <h:commandButton value="Registreren" action="#{userController.submitRegister}" required="true"></h:commandButton>
-                    </h:panelGrid>
-                </p:panel>
-            </h:form>
+            <b:form id="addUserForm" horizontal="true">
+                <b:inputText label-small-screen="2" small-screen="8" id="UserFirstName" value="#{userController.newUser.firstName}" label="Voornaam" required="true" />
+                <b:inputText label-small-screen="2" small-screen="8" id="UserLastName" value="#{userController.newUser.lastName}" label="Achternaam" required="true" />
+                <b:inputText label-small-screen="2" small-screen="8" id="UserEmailName" value="#{userController.newUser.email}" label="Email" required="true" />
+                <b:inputSecret label-small-screen="2" small-screen="8" id="UserPasswordName" value="#{userController.newUser.password}" label="Wachtwoord" required="true" />
+                <b:inputText label-small-screen="2" small-screen="8" id="UserStreetName" value="#{userController.newUser.street}" label="Straat en huisnummer" required="true" />
+                <b:inputText label-small-screen="2" small-screen="8" id="UserVillageName" value="#{userController.newUser.village}" label="Stad" required="true" />
+                <b:row>
+                    <b:column offset="2">
+                        <b:commandButton value="Registreren" action="#{userController.submitRegister}" />
+                    </b:column>
+                </b:row>
+            </b:form>
         </div>
     </ui:define>
 </ui:composition>
