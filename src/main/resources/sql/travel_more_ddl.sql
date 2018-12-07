@@ -60,11 +60,11 @@ CREATE TABLE user (
 );
 
 INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `password`, `village`, `street`) VALUES
-(1, 'Firstname1', 'Lastname1', 'user2@test.com', 'test', 'GemeenteA', 'Straat 2'),
-(2, 'Firstname2', 'Lastname2', 'user1@test.com', 'test', 'GemeenteB', 'Straat 4'),
-(3, 'Firstname3', 'Lastname3', 'user3@test.com', 'test', 'GemeenteC', 'Straat 6'),
-(4, 'Firstname4', 'Lastname4', 'user4@test.com', 'test', 'GemeenteD', 'Straat 8'),
-(5, 'Firstname5', 'Lastname5', 'user5@test.com', 'test', 'GemeenteE', 'Straat 10');
+(1, 'Christophe', 'Van Hoof', 'christophe@thomasmore.be', 'test', 'Mol', 'Stationsstraat 2'),
+(2, 'Brend', 'Simons', 'brend@thomasmore.be', 'test', 'Mol', 'Kleinhoefstraat 4'),
+(3, 'Antoon', 'De Smedt', 'antoon@thomasmore.be', 'test', 'Mol', 'Achterbeemden 6'),
+(4, 'Andreas', 'Aerts', 'andreas@thomasmore.be', 'test', 'Geel', 'Singellaan 8'),
+(5, 'Jari', 'Mathé', 'jari@thomasmore.be', 'test', 'Geel', 'Bronstraat 10');
 
 DROP TABLE booking;
 
