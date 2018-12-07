@@ -72,6 +72,22 @@ public class SearchController {
         return "tripList";
     }
 
+    public String submitdetailed(){
+
+        searchTrip.setBackDate(addDays(searchTrip.getBackDate(), 1));
+        searchedTrips = tripService.searchAll(searchTrip);
+
+        List<Trip> loop = new ArrayList<>(searchedTrips);
+
+        for(Trip t : loop){
+            if(getPlacesEmpty(t) < searchTrip.getPlaces()){
+                searchedTrips.remove(t);
+            }
+        }
+
+        return "tripList";
+    }
+
     public int getPlacesEmpty(Trip trip){
         List<Booking> bookings = bookingService.getBookingByTrip(trip.getId());
         int places = trip.getPlaces();

@@ -5,36 +5,13 @@
 
 .footer{
     background-color: #b2e5f3;
-}
-
-.footer .column{
-    position: relative;
-    height: 50px;
-}
-
-.footer .column p{
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.footer .column p.center{
-    text-align: center;
+    bottom: 0;
+    padding: 20px 10px;
     width: 100%;
 }
 
-.footer .navbar-right{
-    margin-right: 0px;
-}
-
-.footer .navbar-right a{
-    color: #2b6597;
-}
-
-.footer .navbar-right .logout{
-    padding: 15px 5px;
-}
-
-.footer .navbar-right a:hover, .footer .navbar-right .logout:hover{
-    background-color: #d3fbff;
+.footer-text {
+    margin: 0;
+    padding: 0;
 }

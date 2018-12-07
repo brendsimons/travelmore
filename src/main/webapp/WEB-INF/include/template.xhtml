@@ -25,9 +25,14 @@
     <ui:insert name="head"/>
 </h:head>
 <h:body>
-    <b:navBar brandHref="zoeken.xhtml" brandImg="/travelmore/resources/images/headerlogo.png" brandImgStyle="width:12rem; height:auto;" fluid="true">
+    <b:navBar brandHref="index.xhtml" brandImg="/travelmore/resources/images/headerlogo.png" brandImgStyle="width:12rem; height:auto;" fluid="true">
         <b:navbarLinks>
-            <b:navLink value="Zoeken" href="zoeken.xhtml"></b:navLink>
+            <b:navLink value="Reis zoeken" href="index.xhtml" />
+            <c:choose>
+                <c:when test="#{userController.loggedIn}">
+                    <b:navLink value="Mijn boekingen" href="bedankt.xhtml" />
+                </c:when>
+            </c:choose>
         </b:navbarLinks>
         <b:navbarLinks pull="right">
             <c:choose>
@@ -37,8 +42,8 @@
                     </b:form>
                 </c:when>
                 <c:otherwise>
-                    <b:navLink value="Aanmelden" href="login.xhtml"></b:navLink>
-                    <b:navLink value="Registreren" href="register.xhtml"></b:navLink>
+                    <b:navLink value="Aanmelden" href="login.xhtml" />
+                    <b:navLink value="Registreren" href="register.xhtml" />
                 </c:otherwise>
             </c:choose>
         </b:navbarLinks>
@@ -48,37 +53,10 @@
         <ui:insert name="body"/>
         <hr/>
     </b:container>
-
-    <footer class="bg-info text-light py-5 footer">
-        <b:container fluid="true">
-            <b:row>
-                <b:column colXs="12" colMd="3" class="column">
-                    <p>
-                        &copy; 2018 - 2019 TravelMore
-                    </p>
-                </b:column>
-                <b:column colXs="12" colMd="6" class="column">
-                    <p class="center">
-                        Andreas Aerts, Antoon De Smedt, Brend Simons, Christophe Van Hoof, Jari Mathé
-                    </p>
-                </b:column>
-                <b:column colXs="12" colMd="3">
-                    <b:navbarLinks pull="right">
-                        <c:choose>
-                            <c:when test="#{userController.loggedIn}">
-                                <b:form class="logout">
-                                    <h:commandLink action="#{userController.logout}" value="Uitloggen"/>
-                                </b:form>
-                            </c:when>
-                            <c:otherwise>
-                                <b:navLink value="Aanmelden" href="login.xhtml"></b:navLink>
-                                <b:navLink value="Registreren" href="register.xhtml"></b:navLink>
-                            </c:otherwise>
-                        </c:choose>
-                    </b:navbarLinks>
-                </b:column>
-            </b:row>
-        </b:container>
+    <footer class="bg-info text-light footer">
+        <div class="center">
+            <p class="text-center footer-text">&copy; 2018 - 2019 TravelMore || Andreas Aerts, Antoon De Smedt, Brend Simons, Christophe Van Hoof, Jari Mathé</p>
+        </div>
     </footer>
 
     <ui:insert name="scripts"/>

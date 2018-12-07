@@ -49,7 +49,7 @@ public class UserController {
             this.userService.insert(newUser);
             return "registerBedankt";
         }else{
-            this.errorMessage = "Het email adres is al in gebruik.";
+            this.errorMessage = "Het emailadres is al in gebruik.";
             return "register";
         }
     }
@@ -68,7 +68,7 @@ public class UserController {
 
             return "loginBedankt";
         }else{
-            this.errorMessage = "Foutief wachtwoord of email adres ingegeven.";
+            this.errorMessage = "Foutief emailadres en/of wachtwoord ingegeven.";
             return "login";
         }
 
@@ -104,7 +104,8 @@ public class UserController {
 //    }
 
     public String navigateToLogin(){
-        return "login";
+        this.errorMessage = null;
+        return "login.xhtml";
     }
 
 }
